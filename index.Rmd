@@ -1,5 +1,5 @@
 ---
-title: "Ports of animation examples - animint2 Gallery"
+title: "Animation Gallery"
 output:
   html_document:
     self_contained: false
@@ -7,109 +7,74 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=FALSE, results="asis", message=FALSE, warning=FALSE)
-
-#loading data
-meta       <- tryCatch(read.csv("meta.csv", stringsAsFactors=FALSE), error=function(e) data.frame())
-error_meta <- tryCatch(read.csv("error.csv", stringsAsFactors=FALSE), error=function(e) data.frame())
-
-# Create a clean owner/repo helper function
-get_urls <- function(owner_repo) {
-  parts <- strsplit(owner_repo, "/")[[1]]
-  owner <- parts[1]
-  repo  <- parts[2]
-  list(
-    viz = paste0("https://", owner, ".github.io/", repo, "/"),
-    repo = paste0("[https://github.com/](https://github.com/)", owner_repo),
-    img = paste0("[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)", owner_repo, "/gh-pages/Capture.PNG")
-  )
-}
+knitr::opts_chunk$set(echo = FALSE, results = "asis", message = FALSE, warning = FALSE)
+suppressPackageStartupMessages(library(data.table))
 ```
 
-<div class="hero">
-<div class="hero-inner">
-<p class="hero-eyebrow">GSoC 2026 · animint2</p>
-<h1>Ports of animation examples</h1>
-<p class="hero-sub">Interactive statistical visualizations ported to animint2</p>
-<div class="hero-links">
-<a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples" class="hero-btn">Wiki page</a>
-</div>
-</div>
-</div>
+<div class="site-wrapper">
 
+  <header class="hero">
+    <div class="hero-eyebrow">animint2 &mdash; GSoC Project</div>
+    <h1 class="hero-title">Statistical<br><em>Animation</em><br>Gallery</h1>
+    <p class="hero-subtitle">Interactive statistical visualizations built with R and animint2</p>
+    <div class="hero-rule"></div>
+  </header>
+
+  <section class="meta-bar">
 ```{r stats}
-total <- nrow(meta)
-missing <- if(nrow(error_meta) > 0) nrow(error_meta) else 0
+meta <- fread("meta.csv")
+n   <- nrow(meta)
 cat(paste0(
-  "<div class='stats-row'>",
-  "<div class='stat-box'><p class='stat-number'>", total, "</p><p class='stat-label'>visualizations</p></div>",
-  "<div class='stat-box'><p class='stat-number'>", total + missing, "</p><p class='stat-label'>total ports</p></div>",
-  "</div>"
+  '<div class="meta-stat"><span class="meta-num">', n, '</span>',
+  '<span class="meta-label">Visualizations</span></div>',
+  '<div class="meta-stat"><span class="meta-num">',
+  length(unique(sub("/.*", "", meta$viz_owner_repo))),
+  '</span><span class="meta-label">Contributors</span></div>',
+  '<div class="meta-stat"><span class="meta-num">R</span>',
+  '<span class="meta-label">Language</span></div>'
 ))
+```
+  </section>
 
-if(nrow(meta) > 0) {
-  # Matching your specific CSV column: viz_owner_repo
-  yours <- meta[grepl("Nishita-shah1", meta$viz_owner_repo, ignore.case=TRUE), ]
-  
-  if(nrow(yours) > 0) {
-    cat("<p class='section-label'>your contribution</p>")
-    cat("<div class='grid'>")
-    for(i in seq_len(nrow(yours))) {
-      r <- yours[i, ]
-      urls <- get_urls(r$viz_owner_repo)
-      
-      cat(paste0(
-        "<div class='card yours'>",
-        "<div class='card-thumb'>",
-        "<img src='", urls$img, "' onerror='this.parentNode.innerHTML=\"<span class=no-img>no screenshot</span>\"'>",
-        "</div>",
-        "<div class='card-body'>",
-        "<span class='yours-badge'>your port</span>",
-        "<p class='card-title'>", r$title, "</p>",
-        "<p class='card-author'>Nishita Shah</p>",
-        "<div class='card-links'>",
-        "<a href='", urls$viz, "' class='card-link card-link-demo'>demo</a>",
-        "<a href='", r$source, "' class='card-link'>source</a>",
-        "<a href='", urls$repo, "' class='card-link'>repo</a>",
-        "</div></div></div>"
-      ))
-    }
-    cat("</div>")
-  }
-}
+  <main class="gallery">
+```{r gallery}
+for (i in seq_len(nrow(meta))) {
+  row      <- meta[i, ]
+  repo_key <- gsub("/", "_", row$viz_owner_repo)
+  img_path <- paste0("repos/", repo_key, ".png")
+  owner    <- sub("/.*", "", row$viz_owner_repo)
+  repo     <- sub(".*/", "", row$viz_owner_repo)
+  viz_url  <- paste0("https://", owner, ".github.io/", repo, "/")
+  repo_url <- paste0("https://github.com/", row$viz_owner_repo)
+  num_pad  <- formatC(i, width = 2, flag = "0")
 
-if(nrow(meta) > 0) {
-  others <- meta[!grepl("Nishita-shah1", meta$viz_owner_repo, ignore.case=TRUE), ]
-  
-  if(nrow(others) > 0) {
-    cat("<p class='section-label'>all ports</p>")
-    cat("<div class='grid'>")
-    for(i in seq_len(nrow(others))) {
-      r <- others[i, ]
-      urls <- get_urls(r$viz_owner_repo)
-      owner_name <- sub("/.*", "", r$viz_owner_repo)
-      
-      cat(paste0(
-        "<div class='card'>",
-        "<div class='card-thumb'>",
-        "<img src='", urls$img, "' onerror='this.parentNode.innerHTML=\"<span class=no-img>no screenshot</span>\"'>",
-        "</div>",
-        "<div class='card-body'>",
-        "<p class='card-title'>", r$title, "</p>",
-        "<p class='card-author'>", owner_name, "</p>",
-        "<div class='card-links'>",
-        "<a href='", urls$viz, "' class='card-link card-link-demo'>demo</a>",
-        "<a href='", r$source, "' class='card-link'>source</a>",
-        "<a href='", urls$repo, "' class='card-link'>repo</a>",
-        "</div></div></div>"
-      ))
-    }
-    cat("</div>")
-  }
+  cat(paste0(
+    '<article class="viz-card">',
+      '<a class="card-thumb" href="', viz_url, '" target="_blank" rel="noopener">',
+        '<img src="', img_path, '" alt="', row$title, '" loading="lazy"/>',
+        '<div class="card-overlay">',
+          '<span class="overlay-cta">View Live &#8599;</span>',
+        '</div>',
+      '</a>',
+      '<div class="card-body">',
+        '<span class="card-index">', num_pad, '</span>',
+        '<h2 class="card-title">', row$title, '</h2>',
+        '<div class="card-links">',
+          '<a href="', viz_url,  '" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>',
+          '<a href="', repo_url, '" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>',
+          '<a href="', row$source, '" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>',
+        '</div>',
+      '</div>',
+    '</article>'
+  ))
 }
 ```
+  </main>
 
-<div class="footer">
-Built with <a href="https://github.com/animint/animint2">animint2</a>
+  <footer class="site-footer">
+    <p>Built with <strong>animint2</strong> &middot;
+       <a href="meta.csv">Download meta.csv</a>
+    </p>
+  </footer>
+
 </div>
-
