@@ -1,0 +1,86 @@
+---
+title: "Ports of animation examples — animint2 Gallery"
+output: html_document
+---
+
+<style>
+body { font-family: sans-serif; max-width: 1100px; margin: 0 auto; padding: 2rem; }
+.gallery-header { border-bottom: 1px solid #eee; padding-bottom: 1.5rem; margin-bottom: 2rem; }
+.gallery-header h1 { font-size: 24px; font-weight: 500; margin: 0 0 6px; }
+.gallery-header p { font-size: 14px; color: #666; margin: 0 0 10px; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 1px solid #ddd; color: #666; }
+.section-label { font-size: 11px; font-weight: 500; color: #999; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 2rem; }
+.card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; }
+.card:hover { border-color: #ccc; }
+.card-thumb { width: 100%; height: 130px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #eee; overflow: hidden; }
+.card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.card-thumb-label { font-size: 11px; color: #bbb; }
+.card-body { padding: 12px 14px; }
+.card-title { font-size: 13px; font-weight: 500; color: #111; margin: 0 0 4px; }
+.card-author { font-size: 12px; color: #888; margin: 0 0 10px; }
+.card-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.card-link { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 1px solid #ddd; color: #185FA5; text-decoration: none; }
+.card-link:hover { background: #f0f0f0; }
+.yours { border: 2px solid #1D9E75; }
+.yours .card-thumb { background: #E1F5EE; }
+.yours-badge { font-size: 10px; padding: 2px 8px; border-radius: 20px; background: #E1F5EE; color: #0F6E56; margin-left: 6px; }
+.error-section { margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1.5rem; }
+.error-card { background: #fff8f8; border: 1px solid #fdd; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 12px; color: #666; }
+</style>
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+meta <- tryCatch(read.csv("meta.csv", stringsAsFactors=FALSE), error=function(e) data.frame())
+error_meta <- tryCatch(read.csv("error.csv", stringsAsFactors=FALSE), error=function(e) data.frame())
+```
+
+<div class="gallery-header">
+<h1>Ports of animation examples</h1>
+<p>animint2 ports of the <a href="https://yihui.org/animation/examples/">animation package</a> — interactive statistical visualizations. Original list: <a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples">wiki page</a></p>
+<div class="tags">
+```{r echo=FALSE, results="asis"}
+cat(sprintf('<span class="tag">%d visualizations</span>', nrow(meta)))
+cat('<span class="tag">animint2</span>')
+cat('<span class="tag">GSoC 2026</span>')
+```
+</div>
+</div>
+
+<p class="section-label">your contribution</p>
+<div class="grid">
+```{r echo=FALSE, results="asis"}
+yours <- meta[grepl("Nishita-shah1", meta$repo.link, ignore.case=TRUE), ]
+for(i in seq_len(nrow(yours))) {
+  r <- yours[i, ]
+  png_url <- gsub("/tree/gh-pages", "/raw/gh-pages/Capture.PNG", r$repo.link)
+  cat(sprintf('<div class="card yours"><div class="card-thumb"><img src="%s" onerror="this.style.display='none'"></div><div class="card-body"><p class="card-title">%s <span class="yours-badge">yours</span></p><p class="card-author">Nishita Shah</p><div class="card-links"><a href="%s" class="card-link">demo</a><a href="%s" class="card-link">source</a><a href="%s" class="card-link">repo</a></div></div></div>',
+    png_url, r$title, r$viz.link, r$source.link, r$repo.link))
+}
+```
+</div>
+
+<p class="section-label">all ports</p>
+<div class="grid">
+```{r echo=FALSE, results="asis"}
+others <- meta[!grepl("Nishita-shah1", meta$repo.link, ignore.case=TRUE), ]
+for(i in seq_len(nrow(others))) {
+  r <- others[i, ]
+  png_url <- gsub("/tree/gh-pages", "/raw/gh-pages/Capture.PNG", r$repo.link)
+  cat(sprintf('<div class="card"><div class="card-thumb"><img src="%s" onerror="this.parentNode.innerHTML='<span class=card-thumb-label>no screenshot</span>'"></div><div class="card-body"><p class="card-title">%s</p><div class="card-links"><a href="%s" class="card-link">demo</a><a href="%s" class="card-link">source</a><a href="%s" class="card-link">repo</a></div></div></div>',
+    png_url, r$title, r$viz.link, r$source.link, r$repo.link))
+}
+```
+</div>
+
+```{r echo=FALSE, results="asis"}
+if(nrow(error_meta) > 0) {
+  cat('<div class="error-section">')
+  cat('<p class="section-label">missing metadata</p>')
+  for(i in seq_len(nrow(error_meta))) {
+    r <- error_meta[i, ]
+    cat(sprintf('<div class="error-card"><a href="%s">%s</a> — %s</div>', r$viz.link, r$viz.link, r$error))
+  }
+  cat('</div>')
+}
+```
