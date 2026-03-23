@@ -1,128 +1,283 @@
 ---
 title: "Ports of animation examples — animint2 Gallery"
-output: html_document
+output:
+  html_document:
+    self_contained: true
+    theme: null
+    highlight: null
+    mathjax: null
 ---
 
-<style>
-body { font-family: sans-serif; max-width: 1100px; margin: 0 auto; padding: 2rem; }
-.gallery-header { border-bottom: 1px solid #eee; padding-bottom: 1.5rem; margin-bottom: 2rem; }
-.gallery-header h1 { font-size: 24px; font-weight: 500; margin: 0 0 6px; }
-.gallery-header p { font-size: 14px; color: #666; margin: 0 0 10px; }
-.tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.tag { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 1px solid #ddd; color: #666; }
-.section-label { font-size: 11px; font-weight: 500; color: #999; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 12px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 2rem; }
-.card { background: #fff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; }
-.card:hover { border-color: #ccc; }
-.card-thumb { width: 100%; height: 130px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #eee; overflow: hidden; }
-.card-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.card-thumb-label { font-size: 11px; color: #bbb; }
-.card-body { padding: 12px 14px; }
-.card-title { font-size: 13px; font-weight: 500; color: #111; margin: 0 0 4px; }
-.card-author { font-size: 12px; color: #888; margin: 0 0 10px; }
-.card-links { display: flex; gap: 6px; flex-wrap: wrap; }
-.card-link { font-size: 11px; padding: 3px 10px; border-radius: 20px; border: 1px solid #ddd; color: #185FA5; text-decoration: none; }
-.card-link:hover { background: #f0f0f0; }
-.yours { border: 2px solid #1D9E75; }
-.yours .card-thumb { background: #E1F5EE; }
-.yours-badge { font-size: 10px; padding: 2px 8px; border-radius: 20px; background: #E1F5EE; color: #0F6E56; margin-left: 6px; }
-.error-section { margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1.5rem; }
-.error-card { background: #fff8f8; border: 1px solid #fdd; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 12px; color: #666; }
-</style>
-
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 meta       <- tryCatch(read.csv("meta.csv",  stringsAsFactors = FALSE), error = function(e) data.frame())
 error_meta <- tryCatch(read.csv("error.csv", stringsAsFactors = FALSE), error = function(e) data.frame())
 ```
 
-<div class="gallery-header">
-<h1>Ports of animation examples</h1>
-<p>animint2 ports of the <a href="https://yihui.org/animation/examples/">animation package</a> — interactive statistical visualizations. Original list: <a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples">wiki page</a></p>
-<div class="tags">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #f0f4f8;
+  color: #1a202c;
+  min-height: 100vh;
+}
 
-```{r echo=FALSE, results='asis'}
-cat(sprintf('<span class="tag">%d visualizations</span>', nrow(meta)))
-cat('<span class="tag">animint2</span>')
-cat('<span class="tag">GSoC 2026</span>')
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #1a365d 0%, #2d6a9f 50%, #38a169 100%);
+  color: white;
+  text-align: center;
+  padding: 3rem 2rem 2.5rem;
+}
+.hero h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 0.6rem; }
+.hero p  { font-size: 1.05rem; opacity: 0.88; margin-bottom: 1.4rem; }
+.hero a  { color: #90cdf4; }
+.hero-stats {
+  display: inline-flex;
+  gap: 2rem;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 0.7rem 2rem;
+  backdrop-filter: blur(4px);
+}
+.hero-stat { text-align: center; }
+.hero-stat .num { font-size: 1.6rem; font-weight: 700; display: block; }
+.hero-stat .lbl { font-size: 0.72rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Layout */
+.page-wrap { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; }
+
+/* Section header */
+.section-header { display: flex; align-items: center; gap: 10px; margin: 2rem 0 1.2rem; }
+.section-header h2 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #718096; white-space: nowrap; }
+.section-header .line { flex: 1; height: 1px; background: #e2e8f0; }
+.section-header .badge { font-size: 0.7rem; padding: 2px 10px; border-radius: 20px; background: #ebf8ff; color: #2b6cb0; border: 1px solid #bee3f8; white-space: nowrap; }
+.section-header .badge.mine { background: #f0fff4; color: #276749; border-color: #9ae6b4; }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+
+/* Card */
+.card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  display: flex;
+  flex-direction: column;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.10); border-color: #cbd5e0; }
+.card.mine  { border: 2px solid #38a169; box-shadow: 0 0 0 3px rgba(56,161,105,0.10); }
+
+/* Thumbnail */
+.card-thumb {
+  width: 100%; height: 155px;
+  background: linear-gradient(135deg, #ebf4ff, #e6fffa);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
+.card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+.card:hover .card-thumb img { transform: scale(1.04); }
+.no-img { font-size: 0.75rem; color: #a0aec0; text-align: center; padding: 1rem; }
+.mine-ribbon {
+  position: absolute; top: 10px; right: -22px;
+  background: #38a169; color: white;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em;
+  padding: 3px 28px; transform: rotate(35deg); text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* Card body */
+.card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; }
+.card-title { font-size: 0.95rem; font-weight: 600; color: #2d3748; margin-bottom: 4px; line-height: 1.35; }
+.card-author { font-size: 0.75rem; color: #718096; margin-bottom: 12px; }
+.card-links { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; }
+.card-link {
+  font-size: 0.72rem; font-weight: 500; padding: 4px 11px;
+  border-radius: 20px; text-decoration: none;
+  border: 1px solid #e2e8f0; color: #2b6cb0; background: #ebf8ff;
+  transition: background 0.15s;
+}
+.card-link:hover { background: #bee3f8; }
+.card-link.demo  { background: #2b6cb0; color: white; border-color: #2b6cb0; }
+.card-link.demo:hover { background: #2c5282; }
+.card-link.mine-demo  { background: #38a169; color: white; border-color: #38a169; }
+.card-link.mine-demo:hover { background: #276749; }
+
+/* Error section */
+.error-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 0.75rem; }
+.error-card {
+  background: #fff5f5; border: 1px solid #fed7d7; border-radius: 10px;
+  padding: 10px 14px; font-size: 0.78rem; color: #744210;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.error-card::before { content: "⚠"; font-size: 1rem; color: #e53e3e; flex-shrink: 0; }
+.error-card a { color: #c05621; font-weight: 500; }
+
+/* Footer */
+.gallery-footer {
+  text-align: center; padding: 1.5rem;
+  font-size: 0.78rem; color: #a0aec0;
+  border-top: 1px solid #e2e8f0; margin-top: 2rem;
+}
+.gallery-footer a { color: #4a90d9; text-decoration: none; }
+</style>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Ports of animation examples</h1>
+  <p>
+    animint2 ports of the
+    <a href="https://yihui.org/animation/examples/">animation package</a>
+    — interactive statistical visualizations &nbsp;·&nbsp;
+    <a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples">wiki page</a>
+  </p>
+  <div class="hero-stats">
+
+```{r hero-stats, echo=FALSE, results='asis'}
+cat(sprintf(
+  '<div class="hero-stat"><span class="num">%d</span><span class="lbl">Visualizations</span></div>',
+  nrow(meta)
+))
+cat('<div class="hero-stat"><span class="num">animint2</span><span class="lbl">Package</span></div>')
+cat('<div class="hero-stat"><span class="num">GSoC</span><span class="lbl">2026</span></div>')
 ```
 
-</div>
+  </div>
 </div>
 
-<p class="section-label">your contribution</p>
+<div class="page-wrap">
+
+<!-- ── YOUR CONTRIBUTION ── -->
+<div class="section-header">
+  <h2>Your Contribution</h2>
+  <div class="line"></div>
+  <span class="badge mine">Nishita Shah</span>
+</div>
 <div class="grid">
 
-```{r echo=FALSE, results='asis'}
-yours <- meta[grepl("Nishita-shah1", meta$repo.link, ignore.case = TRUE), ]
+```{r yours-cards, echo=FALSE, results='asis'}
+yours <- if (nrow(meta) > 0) {
+  meta[grepl("Nishita-shah1", meta$repo.link, ignore.case = TRUE), ]
+} else data.frame()
+
 if (nrow(yours) > 0) {
   for (i in seq_len(nrow(yours))) {
     r <- yours[i, ]
-    png_url <- gsub("/tree/gh-pages", "/raw/gh-pages/Capture.PNG", r$repo.link)
+    owner_repo <- sub("https://github.com/", "", r$repo.link)
+    owner_repo <- sub("/tree/gh-pages.*", "", owner_repo)
+    local_png  <- paste0("repos/", gsub("/", "_", owner_repo), ".png")
+    raw_png    <- paste0("https://raw.githubusercontent.com/", owner_repo, "/gh-pages/Capture.PNG")
     cat(sprintf(
-      '<div class="card yours">
+      '<div class="card mine">
         <div class="card-thumb">
-          <img src="%s" onerror="this.style.display=\'none\'">
-        </div>
-        <div class="card-body">
-          <p class="card-title">%s <span class="yours-badge">yours</span></p>
-          <p class="card-author">Nishita Shah</p>
-          <div class="card-links">
-            <a href="%s" class="card-link">demo</a>
-            <a href="%s" class="card-link">source</a>
-            <a href="%s" class="card-link">repo</a>
-          </div>
-        </div>
-      </div>',
-      png_url, r$title, r$viz.link, r$source.link, r$repo.link
-    ))
-  }
-}
-```
-
-</div>
-
-<p class="section-label">all ports</p>
-<div class="grid">
-
-```{r echo=FALSE, results='asis'}
-others <- meta[!grepl("Nishita-shah1", meta$repo.link, ignore.case = TRUE), ]
-if (nrow(others) > 0) {
-  for (i in seq_len(nrow(others))) {
-    r <- others[i, ]
-    png_url <- gsub("/tree/gh-pages", "/raw/gh-pages/Capture.PNG", r$repo.link)
-    cat(sprintf(
-      '<div class="card">
-        <div class="card-thumb">
-          <img src="%s" onerror="this.parentNode.innerHTML=\'<span class=card-thumb-label>no screenshot</span>\'">
+          <span class="mine-ribbon">yours</span>
+          <img src="%s"
+               onerror="this.src=\'%s\';this.onerror=function(){this.style.display=\'none\';this.parentNode.innerHTML+=\'<div class=no-img>No screenshot yet</div>\'}">
         </div>
         <div class="card-body">
           <p class="card-title">%s</p>
+          <p class="card-author">Nishita Shah</p>
           <div class="card-links">
-            <a href="%s" class="card-link">demo</a>
-            <a href="%s" class="card-link">source</a>
-            <a href="%s" class="card-link">repo</a>
+            <a href="%s" class="card-link mine-demo" target="_blank">&#9654; Live Demo</a>
+            <a href="%s" class="card-link" target="_blank">Source</a>
+            <a href="%s" class="card-link" target="_blank">Repo</a>
           </div>
         </div>
       </div>',
-      png_url, r$title, r$viz.link, r$source.link, r$repo.link
+      local_png, raw_png,
+      r$title,
+      r$viz.link, r$source.link, r$repo.link
     ))
   }
+} else {
+  cat('<p style="color:#718096;font-size:0.85rem;padding:0.5rem 0;">No contributions found for Nishita-shah1.</p>')
 }
 ```
 
 </div>
 
-```{r echo=FALSE, results='asis'}
+<!-- ── ALL PORTS ── -->
+<div class="section-header">
+  <h2>All Ports</h2>
+  <div class="line"></div>
+
+```{r all-badge, echo=FALSE, results='asis'}
+others <- if (nrow(meta) > 0) {
+  meta[!grepl("Nishita-shah1", meta$repo.link, ignore.case = TRUE), ]
+} else data.frame()
+cat(sprintf('<span class="badge">%d ports</span>', nrow(others)))
+```
+
+</div>
+<div class="grid">
+
+```{r others-cards, echo=FALSE, results='asis'}
+if (nrow(others) > 0) {
+  for (i in seq_len(nrow(others))) {
+    r <- others[i, ]
+    owner_repo <- sub("https://github.com/", "", r$repo.link)
+    owner_repo <- sub("/tree/gh-pages.*", "", owner_repo)
+    local_png  <- paste0("repos/", gsub("/", "_", owner_repo), ".png")
+    raw_png    <- paste0("https://raw.githubusercontent.com/", owner_repo, "/gh-pages/Capture.PNG")
+    author     <- strsplit(owner_repo, "/")[[1]][1]
+    cat(sprintf(
+      '<div class="card">
+        <div class="card-thumb">
+          <img src="%s"
+               onerror="this.src=\'%s\';this.onerror=function(){this.style.display=\'none\';this.parentNode.innerHTML+=\'<div class=no-img>No screenshot</div>\'}">
+        </div>
+        <div class="card-body">
+          <p class="card-title">%s</p>
+          <p class="card-author">%s</p>
+          <div class="card-links">
+            <a href="%s" class="card-link demo" target="_blank">&#9654; Live</a>
+            <a href="%s" class="card-link" target="_blank">Source</a>
+            <a href="%s" class="card-link" target="_blank">Repo</a>
+          </div>
+        </div>
+      </div>',
+      local_png, raw_png,
+      r$title, author,
+      r$viz.link, r$source.link, r$repo.link
+    ))
+  }
+} else {
+  cat('<p style="color:#718096;font-size:0.85rem;">No other ports found.</p>')
+}
+```
+
+</div>
+
+<!-- ── MISSING METADATA ── -->
+
+```{r errors-section, echo=FALSE, results='asis'}
 if (nrow(error_meta) > 0) {
-  cat('<div class="error-section">')
-  cat('<p class="section-label">missing metadata</p>')
+  cat(sprintf(
+    '<div class="section-header">
+      <h2>Missing Screenshots</h2>
+      <div class="line"></div>
+      <span class="badge" style="background:#fff5f5;color:#c05621;border-color:#feb2b2;">%d repos</span>
+    </div>
+    <div class="error-grid">',
+    nrow(error_meta)
+  ))
   for (i in seq_len(nrow(error_meta))) {
     r <- error_meta[i, ]
     cat(sprintf(
-      '<div class="error-card"><a href="%s">%s</a> — %s</div>',
-      r$viz.link, r$viz.link, r$error
+      '<div class="error-card"><a href="%s" target="_blank">%s</a> — %s</div>',
+      r$viz.link, r$viz_owner_repo, r$error
     ))
   }
   cat('</div>')
 }
 ```
+
+</div><!-- end page-wrap -->
+
+<div class="gallery-footer">
+  Built with <a href="https://github.com/animint/animint2" target="_blank">animint2</a> &nbsp;&middot;&nbsp;
+  <a href="meta.csv">Download meta.csv</a> &nbsp;&middot;&nbsp;
+  <a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples" target="_blank">Wiki page</a>
+</div>
