@@ -31,55 +31,97 @@ body { font-family: sans-serif; max-width: 1100px; margin: 0 auto; padding: 2rem
 </style>
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-meta <- tryCatch(read.csv("meta.csv", stringsAsFactors=FALSE), error=function(e) data.frame())
-error_meta <- tryCatch(read.csv("error.csv", stringsAsFactors=FALSE), error=function(e) data.frame())
+meta       <- tryCatch(read.csv("meta.csv",  stringsAsFactors = FALSE), error = function(e) data.frame())
+error_meta <- tryCatch(read.csv("error.csv", stringsAsFactors = FALSE), error = function(e) data.frame())
 ```
 
 <div class="gallery-header">
 <h1>Ports of animation examples</h1>
 <p>animint2 ports of the <a href="https://yihui.org/animation/examples/">animation package</a> — interactive statistical visualizations. Original list: <a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples">wiki page</a></p>
 <div class="tags">
-```{r echo=FALSE, results="asis"}
+
+```{r echo=FALSE, results='asis'}
 cat(sprintf('<span class="tag">%d visualizations</span>', nrow(meta)))
 cat('<span class="tag">animint2</span>')
 cat('<span class="tag">GSoC 2026</span>')
 ```
+
 </div>
 </div>
 
 <p class="section-label">your contribution</p>
 <div class="grid">
-```{r echo=FALSE, results="asis"}
-yours <- meta[grepl("Nishita-shah1", meta$repo.link, ignore.case=TRUE), ]
-for(i in seq_len(nrow(yours))) {
-  r <- yours[i, ]
-  png_url <- gsub("/tree/gh-pages", "/raw/gh-pages/Capture.PNG", r$repo.link)
-  cat(sprintf('<div class="card yours"><div class="card-thumb"><img src="%s" onerror="this.style.display='none'"></div><div class="card-body"><p class="card-title">%s <span class="yours-badge">yours</span></p><p class="card-author">Nishita Shah</p><div class="card-links"><a href="%s" class="card-link">demo</a><a href="%s" class="card-link">source</a><a href="%s" class="card-link">repo</a></div></div></div>',
-    png_url, r$title, r$viz.link, r$source.link, r$repo.link))
+
+```{r echo=FALSE, results='asis'}
+yours <- meta[grepl("Nishita-shah1", meta$repo.link, ignore.case = TRUE), ]
+if (nrow(yours) > 0) {
+  for (i in seq_len(nrow(yours))) {
+    r <- yours[i, ]
+    png_url <- gsub("/tree/gh-pages", "/raw/gh-pages/Capture.PNG", r$repo.link)
+    cat(sprintf(
+      '<div class="card yours">
+        <div class="card-thumb">
+          <img src="%s" onerror="this.style.display=\'none\'">
+        </div>
+        <div class="card-body">
+          <p class="card-title">%s <span class="yours-badge">yours</span></p>
+          <p class="card-author">Nishita Shah</p>
+          <div class="card-links">
+            <a href="%s" class="card-link">demo</a>
+            <a href="%s" class="card-link">source</a>
+            <a href="%s" class="card-link">repo</a>
+          </div>
+        </div>
+      </div>',
+      png_url, r$title, r$viz.link, r$source.link, r$repo.link
+    ))
+  }
 }
 ```
+
 </div>
 
 <p class="section-label">all ports</p>
 <div class="grid">
-```{r echo=FALSE, results="asis"}
-others <- meta[!grepl("Nishita-shah1", meta$repo.link, ignore.case=TRUE), ]
-for(i in seq_len(nrow(others))) {
-  r <- others[i, ]
-  png_url <- gsub("/tree/gh-pages", "/raw/gh-pages/Capture.PNG", r$repo.link)
-  cat(sprintf('<div class="card"><div class="card-thumb"><img src="%s" onerror="this.parentNode.innerHTML='<span class=card-thumb-label>no screenshot</span>'"></div><div class="card-body"><p class="card-title">%s</p><div class="card-links"><a href="%s" class="card-link">demo</a><a href="%s" class="card-link">source</a><a href="%s" class="card-link">repo</a></div></div></div>',
-    png_url, r$title, r$viz.link, r$source.link, r$repo.link))
+
+```{r echo=FALSE, results='asis'}
+others <- meta[!grepl("Nishita-shah1", meta$repo.link, ignore.case = TRUE), ]
+if (nrow(others) > 0) {
+  for (i in seq_len(nrow(others))) {
+    r <- others[i, ]
+    png_url <- gsub("/tree/gh-pages", "/raw/gh-pages/Capture.PNG", r$repo.link)
+    cat(sprintf(
+      '<div class="card">
+        <div class="card-thumb">
+          <img src="%s" onerror="this.parentNode.innerHTML=\'<span class=card-thumb-label>no screenshot</span>\'">
+        </div>
+        <div class="card-body">
+          <p class="card-title">%s</p>
+          <div class="card-links">
+            <a href="%s" class="card-link">demo</a>
+            <a href="%s" class="card-link">source</a>
+            <a href="%s" class="card-link">repo</a>
+          </div>
+        </div>
+      </div>',
+      png_url, r$title, r$viz.link, r$source.link, r$repo.link
+    ))
+  }
 }
 ```
+
 </div>
 
-```{r echo=FALSE, results="asis"}
-if(nrow(error_meta) > 0) {
+```{r echo=FALSE, results='asis'}
+if (nrow(error_meta) > 0) {
   cat('<div class="error-section">')
   cat('<p class="section-label">missing metadata</p>')
-  for(i in seq_len(nrow(error_meta))) {
+  for (i in seq_len(nrow(error_meta))) {
     r <- error_meta[i, ]
-    cat(sprintf('<div class="error-card"><a href="%s">%s</a> — %s</div>', r$viz.link, r$viz.link, r$error))
+    cat(sprintf(
+      '<div class="error-card"><a href="%s">%s</a> — %s</div>',
+      r$viz.link, r$viz.link, r$error
+    ))
   }
   cat('</div>')
 }
