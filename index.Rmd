@@ -1,5 +1,5 @@
 ---
-title: "Ports of animation examples — animint2 Gallery"
+title: "Ports of animation examples - animint2 Gallery"
 output:
   html_document:
     self_contained: false
@@ -8,132 +8,108 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, results="asis", message=FALSE, warning=FALSE)
-suppressPackageStartupMessages({
-  if (requireNamespace("data.table", quietly=TRUE)) {
-    library(data.table)
-    meta       <- tryCatch(fread("meta.csv"),       error=function(e) data.table())
-    error_meta <- tryCatch(fread("error.csv"),      error=function(e) data.table())
-  } else {
-    meta       <- tryCatch(read.csv("meta.csv",  stringsAsFactors=FALSE), error=function(e) data.frame())
-    error_meta <- tryCatch(read.csv("error.csv", stringsAsFactors=FALSE), error=function(e) data.frame())
-  }
-})
+
+#loading data
+meta       <- tryCatch(read.csv("meta.csv", stringsAsFactors=FALSE), error=function(e) data.frame())
+error_meta <- tryCatch(read.csv("error.csv", stringsAsFactors=FALSE), error=function(e) data.frame())
+
+# Create a clean owner/repo helper function
+get_urls <- function(owner_repo) {
+  parts <- strsplit(owner_repo, "/")[[1]]
+  owner <- parts[1]
+  repo  <- parts[2]
+  list(
+    viz = paste0("https://", owner, ".github.io/", repo, "/"),
+    repo = paste0("[https://github.com/](https://github.com/)", owner_repo),
+    img = paste0("[https://raw.githubusercontent.com/](https://raw.githubusercontent.com/)", owner_repo, "/gh-pages/Capture.PNG")
+  )
+}
 ```
 
 <div class="hero">
-  <h1>Ports of animation examples</h1>
-  <p>animint2 ports of the <a href="https://yihui.org/animation/examples/" target="_blank">animation package</a> — interactive statistical visualizations &nbsp;·&nbsp; <a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples" target="_blank">wiki page</a></p>
+<div class="hero-inner">
+<p class="hero-eyebrow">GSoC 2026 · animint2</p>
+<h1>Ports of animation examples</h1>
+<p class="hero-sub">Interactive statistical visualizations ported to animint2</p>
+<div class="hero-links">
+<a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples" class="hero-btn">Wiki page</a>
+</div>
+</div>
 </div>
 
 ```{r stats}
+total <- nrow(meta)
+missing <- if(nrow(error_meta) > 0) nrow(error_meta) else 0
 cat(paste0(
-  "<div class=\"stats-box\">",
-  "<p class=\"stats-number\">", nrow(meta), "</p>",
-  "<p class=\"stats-label\">Interactive Visualizations</p>",
+  "<div class='stats-row'>",
+  "<div class='stat-box'><p class='stat-number'>", total, "</p><p class='stat-label'>visualizations</p></div>",
+  "<div class='stat-box'><p class='stat-number'>", total + missing, "</p><p class='stat-label'>total ports</p></div>",
   "</div>"
 ))
-```
 
-<p class="section-label">&#11088; Your Contribution</p>
-<div class="viz-grid">
-
-```{r yours}
-if (nrow(meta) > 0 && "viz_owner_repo" %in% names(meta)) {
-  mine <- meta[grepl("Nishita-shah1", meta$viz_owner_repo, ignore.case=TRUE), ]
-  if (nrow(mine) > 0) {
-    for (i in seq_len(nrow(mine))) {
-      row    <- mine[i, ]
-      owner  <- sub("/.*", "", row$viz_owner_repo)
-      repo   <- sub(".*/", "", row$viz_owner_repo)
-      imgp   <- paste0("repos/", gsub("/", "_", row$viz_owner_repo), ".png")
-      vizurl <- paste0("https://", owner, ".github.io/", repo, "/")
-      repurl <- paste0("https://github.com/", row$viz_owner_repo)
-      srcurl <- if ("source" %in% names(row) && nchar(row$source) > 0) row$source else repurl
+if(nrow(meta) > 0) {
+  # Matching your specific CSV column: viz_owner_repo
+  yours <- meta[grepl("Nishita-shah1", meta$viz_owner_repo, ignore.case=TRUE), ]
+  
+  if(nrow(yours) > 0) {
+    cat("<p class='section-label'>your contribution</p>")
+    cat("<div class='grid'>")
+    for(i in seq_len(nrow(yours))) {
+      r <- yours[i, ]
+      urls <- get_urls(r$viz_owner_repo)
+      
       cat(paste0(
-        "<div class=\"viz-card mine-card\">",
-        "<div class=\"mine-banner\">&#9733; Your Contribution</div>",
-        "<a href=\"", vizurl, "\" target=\"_blank\">",
-        "<img src=\"", imgp, "\" class=\"viz-image\" alt=\"", row$title, "\"",
-        " onerror=\"this.src='https://raw.githubusercontent.com/", row$viz_owner_repo, "/gh-pages/Capture.PNG'\"/>",
-        "</a>",
-        "<div class=\"viz-content\">",
-        "<h3 class=\"viz-title\">", row$title, "</h3>",
-        "<p class=\"viz-author\">Nishita Shah</p>",
-        "<div class=\"viz-links\">",
-        "<a href=\"", vizurl, "\" target=\"_blank\">View Live</a>",
-        "<a href=\"", repurl, "\" target=\"_blank\">Repository</a>",
-        "<a href=\"", srcurl, "\" target=\"_blank\">Source Code</a>",
+        "<div class='card yours'>",
+        "<div class='card-thumb'>",
+        "<img src='", urls$img, "' onerror='this.parentNode.innerHTML=\"<span class=no-img>no screenshot</span>\"'>",
+        "</div>",
+        "<div class='card-body'>",
+        "<span class='yours-badge'>your port</span>",
+        "<p class='card-title'>", r$title, "</p>",
+        "<p class='card-author'>Nishita Shah</p>",
+        "<div class='card-links'>",
+        "<a href='", urls$viz, "' class='card-link card-link-demo'>demo</a>",
+        "<a href='", r$source, "' class='card-link'>source</a>",
+        "<a href='", urls$repo, "' class='card-link'>repo</a>",
         "</div></div></div>"
       ))
     }
-  } else {
-    cat("<p class=\"empty-note\">No contribution found — ensure repos.txt contains Nishita-shah1/bisection-animint</p>")
+    cat("</div>")
   }
 }
-```
 
-</div>
-
-<p class="section-label">&#128202; All Ports</p>
-<div class="viz-grid">
-
-```{r others}
-if (nrow(meta) > 0 && "viz_owner_repo" %in% names(meta)) {
+if(nrow(meta) > 0) {
   others <- meta[!grepl("Nishita-shah1", meta$viz_owner_repo, ignore.case=TRUE), ]
-  if (nrow(others) > 0) {
-    for (i in seq_len(nrow(others))) {
-      row    <- others[i, ]
-      owner  <- sub("/.*", "", row$viz_owner_repo)
-      repo   <- sub(".*/", "", row$viz_owner_repo)
-      imgp   <- paste0("repos/", gsub("/", "_", row$viz_owner_repo), ".png")
-      vizurl <- paste0("https://", owner, ".github.io/", repo, "/")
-      repurl <- paste0("https://github.com/", row$viz_owner_repo)
-      srcurl <- if ("source" %in% names(row) && nchar(row$source) > 0) row$source else repurl
+  
+  if(nrow(others) > 0) {
+    cat("<p class='section-label'>all ports</p>")
+    cat("<div class='grid'>")
+    for(i in seq_len(nrow(others))) {
+      r <- others[i, ]
+      urls <- get_urls(r$viz_owner_repo)
+      owner_name <- sub("/.*", "", r$viz_owner_repo)
+      
       cat(paste0(
-        "<div class=\"viz-card\">",
-        "<a href=\"", vizurl, "\" target=\"_blank\">",
-        "<img src=\"", imgp, "\" class=\"viz-image\" alt=\"", row$title, "\"",
-        " onerror=\"this.src='https://raw.githubusercontent.com/", row$viz_owner_repo, "/gh-pages/Capture.PNG'\"/>",
-        "</a>",
-        "<div class=\"viz-content\">",
-        "<h3 class=\"viz-title\">", row$title, "</h3>",
-        "<p class=\"viz-author\">", owner, "</p>",
-        "<div class=\"viz-links\">",
-        "<a href=\"", vizurl, "\" target=\"_blank\">View Live</a>",
-        "<a href=\"", repurl, "\" target=\"_blank\">Repository</a>",
-        "<a href=\"", srcurl, "\" target=\"_blank\">Source Code</a>",
+        "<div class='card'>",
+        "<div class='card-thumb'>",
+        "<img src='", urls$img, "' onerror='this.parentNode.innerHTML=\"<span class=no-img>no screenshot</span>\"'>",
+        "</div>",
+        "<div class='card-body'>",
+        "<p class='card-title'>", r$title, "</p>",
+        "<p class='card-author'>", owner_name, "</p>",
+        "<div class='card-links'>",
+        "<a href='", urls$viz, "' class='card-link card-link-demo'>demo</a>",
+        "<a href='", r$source, "' class='card-link'>source</a>",
+        "<a href='", urls$repo, "' class='card-link'>repo</a>",
         "</div></div></div>"
       ))
     }
+    cat("</div>")
   }
-}
-```
-
-</div>
-
-```{r errors}
-if (nrow(error_meta) > 0) {
-  cat("<p class=\"section-label\">&#9888; Missing Screenshots</p>")
-  cat("<div class=\"error-grid\">")
-  for (i in seq_len(nrow(error_meta))) {
-    row    <- error_meta[i, ]
-    or     <- if ("viz_owner_repo" %in% names(row)) row$viz_owner_repo else ""
-    owner  <- sub("/.*", "", or)
-    repo   <- sub(".*/", "", or)
-    vizurl <- paste0("https://", owner, ".github.io/", repo, "/")
-    errmsg <- if ("error" %in% names(row)) row$error else "unknown error"
-    cat(paste0(
-      "<div class=\"error-card\">",
-      "<span class=\"err-icon\">&#9888;</span>",
-      "<div><a href=\"", vizurl, "\" target=\"_blank\">", or, "</a>",
-      "<span class=\"err-msg\"> — ", errmsg, "</span></div>",
-      "</div>"
-    ))
-  }
-  cat("</div>")
 }
 ```
 
 <div class="footer">
-  <p>Built with <a href="https://github.com/animint/animint2" target="_blank">animint2</a> &nbsp;|&nbsp; <a href="meta.csv">Download meta.csv</a> &nbsp;|&nbsp; <a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples" target="_blank">Wiki page</a></p>
+Built with <a href="https://github.com/animint/animint2">animint2</a>
 </div>
+
