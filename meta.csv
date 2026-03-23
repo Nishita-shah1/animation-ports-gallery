@@ -1,11 +1,17 @@
 add.POSIXct,viz_owner_repo,video,source,title
-2026-03-23T12:16:23.616368Z,Vatsal-Rajput/BrownianMotion,,https://github.com/Vatsal-Rajput/Animint2Test,Demonstration of Brownian Motion
-2026-03-23T12:16:23.616368Z,busttech/deploy2,,https://github.com/busttech/Test-solutions-of-animint/blob/main/Medium-test-solution/main.r,Probability in Flipping Coins
-2026-03-23T12:16:23.616368Z,Aryan-SINGH-GIT/knn-animint,,https://github.com/Aryan-SINGH-GIT/animated-interactive-ggplots/blob/master/02_animint2_interactions/knn_animint.R,k-Nearest Neighbours Classification
-2026-03-23T12:16:23.616368Z,AviraL0013/least-squares-animint,,https://github.com/AviraL0013/least-squares-animint/blob/main/source/least_squares_animint.R,Least Squares Method
-2026-03-23T12:16:23.616368Z,ANAMASGARD/conf-int-animint,,https://github.com/ANAMASGARD/conf-int-animint/blob/main/conf_int_viz.R,Demonstration of Confidence Intervals
-2026-03-23T12:16:23.616368Z,ANAMASGARD/boot-iid-animint,,https://github.com/ANAMASGARD/boot-iid-animint/blob/main/boot_iid_viz.R,Bootstrap i.i.d. Demo
-2026-03-23T12:16:23.616368Z,ANAMASGARD/cv-ani-animint,,https://github.com/ANAMASGARD/cv-ani-animint/blob/main/cv_ani_viz.R,Demonstration of k-Fold Cross Validation
-2026-03-23T12:16:23.616368Z,NandaniAggarwal/boot.iid_animation_R,,https://github.com/NandaniAggarwal/animint_R/blob/main/bootid.R,Bootstrapping i.i.d. Data Port
-2026-03-23T12:16:23.616368Z,NandaniAggarwal/boot.lowess_animations_R,,https://github.com/NandaniAggarwal/animint_R/blob/main/bootlowess.R,Bootstrapping LOWESS Port
-2026-03-23T12:16:23.616368Z,Nishita-shah1/bisection-animint,,https://github.com/Nishita-shah1/bisection-animint/blob/main/bisection_animint.R,Bisection Method
+2026-03-24T00:00:00.000000Z,shubhammittal588/Galton_box,,https://github.com/shubhammittal588/Animated_interactive_ggplots_GSoC_Tasks/blob/main/galton_box_final.R,Demonstration of the Galton Box
+2026-03-24T00:00:00.000000Z,Vatsal-Rajput/BrownianMotion,,https://github.com/Vatsal-Rajput/Animint2Test,Demonstration of Brownian Motion
+2026-03-24T00:00:00.000000Z,tushar98644/Animint2_Tests,,https://github.com/tushar98644/Animint2_Tests,Monte Carlo Integration
+2026-03-24T00:00:00.000000Z,busttech/deploy2,,https://github.com/busttech/Test-solutions-of-animint/blob/main/Medium-test-solution/main.r,Probability in Flipping Coins
+2026-03-24T00:00:00.000000Z,suhaani-agarwal/newton_raphson_method,,https://github.com/suhaani-agarwal/r/tree/main/medium_test_newtons_method_code/newtons_root.r,Newton-Raphson Method
+2026-03-24T00:00:00.000000Z,Aryan-SINGH-GIT/knn-animint,,https://github.com/Aryan-SINGH-GIT/animated-interactive-ggplots/blob/master/02_animint2_interactions/knn_animint.R,k-Nearest Neighbours Classification
+2026-03-24T00:00:00.000000Z,AviraL0013/least-squares-animint,,https://github.com/AviraL0013/least-squares-animint/blob/main/source/least_squares_animint.R,Least Squares Method
+2026-03-24T00:00:00.000000Z,prateek-kalwar-95/brownian-motion,,https://github.com/prateek-kalwar-95/brownian-motion,Brownian Motion
+2026-03-24T00:00:00.000000Z,prateek-kalwar-95/flip_coin,,https://github.com/prateek-kalwar-95/flip_coin,Coin Flip Probability
+2026-03-24T00:00:00.000000Z,ANAMASGARD/conf-int-animint,,https://github.com/ANAMASGARD/conf-int-animint/blob/main/conf_int_viz.R,Demonstration of Confidence Intervals
+2026-03-24T00:00:00.000000Z,ANAMASGARD/boot-iid-animint,,https://github.com/ANAMASGARD/boot-iid-animint/blob/main/boot_iid_viz.R,Bootstrap i.i.d. Demo
+2026-03-24T00:00:00.000000Z,ashishtiwari03/animint2-medium-pages,,https://github.com/ashishtiwari03/animint2-medium-pages,Animint2 Medium Test
+2026-03-24T00:00:00.000000Z,ANAMASGARD/cv-ani-animint,,https://github.com/ANAMASGARD/cv-ani-animint/blob/main/cv_ani_viz.R,Demonstration of k-Fold Cross Validation
+2026-03-24T00:00:00.000000Z,NandaniAggarwal/boot.iid_animation_R,,https://github.com/NandaniAggarwal/animint_R/blob/main/bootid.R,Bootstrapping i.i.d. Data Port
+2026-03-24T00:00:00.000000Z,NandaniAggarwal/boot.lowess_animations_R,,https://github.com/NandaniAggarwal/animint_R/blob/main/bootlowess.R,Bootstrapping LOWESS Port
+2026-03-24T00:00:00.000000Z,Nishita-shah1/bisection-animint,,https://github.com/Nishita-shah1/bisection-animint/blob/main/bisection_animint.R,Bisection Method
