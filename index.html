@@ -8,42 +8,141 @@
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
 
 <title>Ports of animation examples — animint2 Gallery</title>
 
-<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
-// be compatible with the behavior of Pandoc < 2.8).
-document.addEventListener('DOMContentLoaded', function(e) {
-  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
-  var i, h, a;
-  for (i = 0; i < hs.length; i++) {
-    h = hs[i];
-    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
-    a = h.attributes;
-    while (a.length > 0) h.removeAttribute(a[0].name);
-  }
-});
-</script>
+<script src="index_files/header-attrs-2.30/header-attrs.js"></script>
+<script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="index_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="index_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="index_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="index_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="index_files/navigation-1.1/tabsets.js"></script>
+<link href="index_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="index_files/highlightjs-9.12.0/highlight.js"></script>
 
 <style type="text/css">
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 
+<!-- tabsets -->
 
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
 
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
 
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
 
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
 
 
 
@@ -53,385 +152,288 @@ ul.task-list{list-style: none;}
 <body>
 
 
+<div class="container-fluid main-container">
+
+
+
+
+<div id="header">
+
 
 
 <h1 class="title toc-ignore">Ports of animation examples — animint2
 Gallery</h1>
 
+</div>
 
 
-<style>
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-background: #f7f9fc;
-color: #1e2535;
-}
-
-.hero {
-background: linear-gradient(120deg, #0f2544 0%, #1a5fa8 55%, #1a9e6e 100%);
-color: #fff;
-padding: 3.2rem 1.5rem 2.8rem;
-text-align: center;
-}
-.hero h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
-.hero .sub { font-size: 1rem; opacity: 0.85; margin-bottom: 1.6rem; }
-.hero a { color: #7dd3fc; text-decoration: none; }
-.hero a:hover { text-decoration: underline; }
-.stat-row {
-display: inline-flex; gap: 0;
-background: rgba(255,255,255,0.12);
-border: 1px solid rgba(255,255,255,0.2);
-border-radius: 14px; overflow: hidden;
-backdrop-filter: blur(6px);
-}
-.stat-item {
-padding: 0.65rem 1.8rem;
-border-right: 1px solid rgba(255,255,255,0.15);
-text-align: center;
-}
-.stat-item:last-child { border-right: none; }
-.stat-item .val { display: block; font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
-.stat-item .key { display: block; font-size: 0.65rem; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
-
-.wrap { max-width: 1180px; margin: 0 auto; padding: 2.5rem 1.4rem 4rem; }
-
-.sec-head {
-display: flex; align-items: center; gap: 10px;
-margin: 2.4rem 0 1.2rem;
-}
-.sec-head .label {
-font-size: 0.72rem; font-weight: 700;
-text-transform: uppercase; letter-spacing: 0.13em;
-color: #8492a6; white-space: nowrap;
-}
-.sec-head .rule { flex: 1; height: 1px; background: #dde3ed; }
-.pill {
-font-size: 0.68rem; font-weight: 600;
-padding: 3px 11px; border-radius: 99px;
-white-space: nowrap;
-}
-.pill-blue { background: #e8f0fe; color: #1a56db; border: 1px solid #c3d6fb; }
-.pill-green { background: #e6faf2; color: #166534; border: 1px solid #a7f3d0; }
-.pill-red { background: #fff1f1; color: #b91c1c; border: 1px solid #fca5a5; }
-
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-gap: 1.2rem;
-}
-
-.card {
-background: #fff;
-border: 1px solid #e4e9f2;
-border-radius: 14px;
-overflow: hidden;
-display: flex; flex-direction: column;
-transition: transform 0.17s ease, box-shadow 0.17s ease, border-color 0.17s ease;
-}
-.card:hover {
-transform: translateY(-5px);
-box-shadow: 0 14px 32px rgba(15,37,68,0.10);
-border-color: #b6c8e8;
-}
-.card.mine {
-border: 2px solid #10b981;
-box-shadow: 0 0 0 4px rgba(16,185,129,0.08);
-}
-
-.thumb-link { display: block; text-decoration: none; }
-.card-thumb {
-position: relative;
-width: 100%; height: 158px;
-background: linear-gradient(135deg, #e8f0fe 0%, #e6faf2 100%);
-overflow: hidden;
-display: flex; align-items: center; justify-content: center;
-}
-.card-thumb img {
-width: 100%; height: 100%; object-fit: cover;
-transition: transform 0.28s ease;
-}
-.card:hover .card-thumb img { transform: scale(1.06); }
-.no-img { font-size: 0.72rem; color: #9aaabb; }
-.mine-ribbon {
-position: absolute; top: 13px; right: -24px;
-background: #10b981; color: #fff;
-font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
-padding: 4px 30px; transform: rotate(35deg);
-pointer-events: none; z-index: 2;
-}
-
-.card-body { padding: 14px 15px 15px; flex: 1; display: flex; flex-direction: column; }
-.card-title {
-font-size: 0.92rem; font-weight: 600; color: #1e2535;
-line-height: 1.38; margin-bottom: 5px;
-}
-.card-author { font-size: 0.73rem; color: #7a8799; margin-bottom: 13px; }
-.you-badge {
-display: inline-block;
-font-size: 0.68rem; font-weight: 600;
-padding: 2px 9px; border-radius: 99px;
-background: #e6faf2; color: #065f46;
-border: 1px solid #a7f3d0;
-}
-.card-links { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; }
-
-.btn {
-font-size: 0.7rem; font-weight: 600;
-padding: 4px 12px; border-radius: 99px;
-text-decoration: none; border: 1px solid transparent;
-transition: opacity 0.15s, background 0.15s;
-white-space: nowrap;
-}
-.btn:hover { opacity: 0.85; }
-.btn-live { background: #1a56db; color: #fff; border-color: #1a56db; }
-.btn-mine { background: #10b981; color: #fff; border-color: #10b981; }
-.btn-src { background: #f0f4ff; color: #1a56db; border-color: #c3d6fb; }
-.btn-repo { background: #f5f7fa; color: #4a5568; border-color: #dde3ed; }
-
-.err-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-gap: 0.7rem;
-}
-.err-card {
-display: flex; align-items: flex-start; gap: 9px;
-background: #fff8f8; border: 1px solid #fca5a5;
-border-radius: 10px; padding: 10px 13px;
-font-size: 0.76rem; color: #7f1d1d; line-height: 1.45;
-}
-.err-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
-.err-card a { color: #b91c1c; font-weight: 600; text-decoration: none; }
-.err-card a:hover { text-decoration: underline; }
-
-.footer {
-text-align: center; padding: 1.4rem 1rem;
-font-size: 0.76rem; color: #9aaabb;
-border-top: 1px solid #dde3ed; margin-top: 2.5rem;
-}
-.footer a { color: #4a90d9; text-decoration: none; }
-.footer a:hover { text-decoration: underline; }
-</style>
-<!-- ═══════════ HERO ═══════════ -->
 <div class="hero">
 <h1>
 Ports of animation examples
 </h1>
-<p class="sub">
+<p>
 animint2 ports of the
-<a href="https://yihui.org/animation/examples/">animation package</a>
- —  interactive statistical visualizations  · 
-<a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples">wiki
+<a href="https://yihui.org/animation/examples/" target="_blank">animation
+package</a> — interactive statistical visualizations  · 
+<a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples" target="_blank">wiki
 page</a>
 </p>
-<div class="stat-row">
-<div class="stat-item">
-<span class="val">7</span><span class="key">Visualizations</span>
 </div>
-<div class="stat-item">
-<span class="val">animint2</span><span class="key">Package</span>
+<div class="stats-box">
+<p class="stats-number">
+7
+</p>
+<p class="stats-label">
+Interactive Visualizations
+</p>
 </div>
-<div class="stat-item">
-<span class="val">GSoC 2026</span><span class="key">Program</span>
+<p class="section-label">
+⭐ Your Contribution
+</p>
+<div class="viz-grid">
+<div class="viz-card mine-card">
+<div class="mine-banner">
+★ Your Contribution
+</div>
+<a href="https://Nishita-shah1.github.io/bisection-animint/" target="_blank"><img src="repos/Nishita-shah1_bisection-animint.png" class="viz-image" alt="Bisection Method" onerror="this.src='https://raw.githubusercontent.com/Nishita-shah1/bisection-animint/gh-pages/Capture.PNG'"/></a>
+<div class="viz-content">
+<h3 class="viz-title">
+Bisection Method
+</h3>
+<p class="viz-author">
+Nishita Shah
+</p>
+<div class="viz-links">
+<a href="https://Nishita-shah1.github.io/bisection-animint/" target="_blank">View
+Live</a><a href="https://github.com/Nishita-shah1/bisection-animint" target="_blank">Repository</a><a href="https://github.com/Nishita-shah1/bisection-animint/blob/main/bisection_animint.R" target="_blank">Source
+Code</a>
 </div>
 </div>
 </div>
-<!-- ═══════════ PAGE BODY ═══════════ -->
-<div class="wrap">
-<!-- ── YOUR CONTRIBUTION ── -->
-<div class="sec-head">
-<span class="label">Your Contribution</span>
-<div class="rule">
-
 </div>
-<p><span class="pill pill-green">Nishita Shah</span></p>
+<p class="section-label">
+📊 All Ports
+</p>
+<div class="viz-grid">
+<div class="viz-card">
+<a href="https://Aryan-SINGH-GIT.github.io/knn-animint/" target="_blank"><img src="repos/Aryan-SINGH-GIT_knn-animint.png" class="viz-image" alt="k-Nearest Neighbors Classification" onerror="this.src='https://raw.githubusercontent.com/Aryan-SINGH-GIT/knn-animint/gh-pages/Capture.PNG'"/></a>
+<div class="viz-content">
+<h3 class="viz-title">
+k-Nearest Neighbors Classification
+</h3>
+<p class="viz-author">
+Aryan-SINGH-GIT
+</p>
+<div class="viz-links">
+<a href="https://Aryan-SINGH-GIT.github.io/knn-animint/" target="_blank">View
+Live</a><a href="https://github.com/Aryan-SINGH-GIT/knn-animint" target="_blank">Repository</a><a href="https://github.com/Aryan-SINGH-GIT/animated-interactive-ggplots/blob/master/02_animint2_interactions/knn_animint.R" target="_blank">Source
+Code</a>
 </div>
-<div class="grid">
-<div class="card mine">
-<pre><code>  &lt;a href=&quot;https://Nishita-shah1.github.io/bisection-animint/&quot; target=&quot;_blank&quot; class=&quot;thumb-link&quot;&gt;
-    &lt;div class=&quot;card-thumb&quot;&gt;
-      &lt;span class=&quot;mine-ribbon&quot;&gt;MINE&lt;/span&gt;
-      &lt;img src=&quot;repos/Nishita-shah1_bisection-animint.png&quot;
-           onerror=&quot;this.src=&#39;https://raw.githubusercontent.com/Nishita-shah1/bisection-animint/gh-pages/Capture.PNG&#39;;this.onerror=function(){this.style.display=&#39;none&#39;;this.parentNode.innerHTML+=&#39;&lt;span class=no-img&gt;No screenshot&lt;/span&gt;&#39;}&quot;&gt;
-    &lt;/div&gt;
-  &lt;/a&gt;
-  &lt;div class=&quot;card-body&quot;&gt;
-    &lt;p class=&quot;card-title&quot;&gt;Bisection Method&lt;/p&gt;
-    &lt;p class=&quot;card-author&quot;&gt;&lt;span class=&quot;you-badge&quot;&gt;Nishita Shah&lt;/span&gt;&lt;/p&gt;
-    &lt;div class=&quot;card-links&quot;&gt;
-      &lt;a href=&quot;https://Nishita-shah1.github.io/bisection-animint/&quot; class=&quot;btn btn-mine&quot; target=&quot;_blank&quot;&gt;&amp;#9654; Live&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/Nishita-shah1/bisection-animint/blob/main/bisection_animint.R&quot; class=&quot;btn btn-src&quot; target=&quot;_blank&quot;&gt;Source&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/Nishita-shah1/bisection-animint&quot; class=&quot;btn btn-repo&quot; target=&quot;_blank&quot;&gt;Repo&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
 </div>
-<!-- ── ALL PORTS ── -->
-<div class="sec-head">
-<span class="label">All Ports</span>
-<div class="rule">
-
 </div>
-<p><span class="pill pill-blue">6 ports</span></p>
+<div class="viz-card">
+<a href="https://ANAMASGARD.github.io/conf-int-animint/" target="_blank"><img src="repos/ANAMASGARD_conf-int-animint.png" class="viz-image" alt="Demonstration of Confidence Intervals" onerror="this.src='https://raw.githubusercontent.com/ANAMASGARD/conf-int-animint/gh-pages/Capture.PNG'"/></a>
+<div class="viz-content">
+<h3 class="viz-title">
+Demonstration of Confidence Intervals
+</h3>
+<p class="viz-author">
+ANAMASGARD
+</p>
+<div class="viz-links">
+<a href="https://ANAMASGARD.github.io/conf-int-animint/" target="_blank">View
+Live</a><a href="https://github.com/ANAMASGARD/conf-int-animint" target="_blank">Repository</a><a href="https://github.com/ANAMASGARD/conf-int-animint/blob/main/conf_int_viz.R" target="_blank">Source
+Code</a>
 </div>
-<div class="grid">
-<div class="card">
-<pre><code>  &lt;a href=&quot;https://Aryan-SINGH-GIT.github.io/knn-animint/&quot; target=&quot;_blank&quot; class=&quot;thumb-link&quot;&gt;
-    &lt;div class=&quot;card-thumb&quot;&gt;
-      
-      &lt;img src=&quot;repos/Aryan-SINGH-GIT_knn-animint.png&quot;
-           onerror=&quot;this.src=&#39;https://raw.githubusercontent.com/Aryan-SINGH-GIT/knn-animint/gh-pages/Capture.PNG&#39;;this.onerror=function(){this.style.display=&#39;none&#39;;this.parentNode.innerHTML+=&#39;&lt;span class=no-img&gt;No screenshot&lt;/span&gt;&#39;}&quot;&gt;
-    &lt;/div&gt;
-  &lt;/a&gt;
-  &lt;div class=&quot;card-body&quot;&gt;
-    &lt;p class=&quot;card-title&quot;&gt;k-Nearest Neighbors Classification&lt;/p&gt;
-    &lt;p class=&quot;card-author&quot;&gt;Aryan-SINGH-GIT&lt;/p&gt;
-    &lt;div class=&quot;card-links&quot;&gt;
-      &lt;a href=&quot;https://Aryan-SINGH-GIT.github.io/knn-animint/&quot; class=&quot;btn btn-live&quot; target=&quot;_blank&quot;&gt;&amp;#9654; Live&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/Aryan-SINGH-GIT/animated-interactive-ggplots/blob/master/02_animint2_interactions/knn_animint.R&quot; class=&quot;btn btn-src&quot; target=&quot;_blank&quot;&gt;Source&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/Aryan-SINGH-GIT/knn-animint&quot; class=&quot;btn btn-repo&quot; target=&quot;_blank&quot;&gt;Repo&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;
-  &lt;a href=&quot;https://ANAMASGARD.github.io/conf-int-animint/&quot; target=&quot;_blank&quot; class=&quot;thumb-link&quot;&gt;
-    &lt;div class=&quot;card-thumb&quot;&gt;
-      
-      &lt;img src=&quot;repos/ANAMASGARD_conf-int-animint.png&quot;
-           onerror=&quot;this.src=&#39;https://raw.githubusercontent.com/ANAMASGARD/conf-int-animint/gh-pages/Capture.PNG&#39;;this.onerror=function(){this.style.display=&#39;none&#39;;this.parentNode.innerHTML+=&#39;&lt;span class=no-img&gt;No screenshot&lt;/span&gt;&#39;}&quot;&gt;
-    &lt;/div&gt;
-  &lt;/a&gt;
-  &lt;div class=&quot;card-body&quot;&gt;
-    &lt;p class=&quot;card-title&quot;&gt;Demonstration of Confidence Intervals&lt;/p&gt;
-    &lt;p class=&quot;card-author&quot;&gt;ANAMASGARD&lt;/p&gt;
-    &lt;div class=&quot;card-links&quot;&gt;
-      &lt;a href=&quot;https://ANAMASGARD.github.io/conf-int-animint/&quot; class=&quot;btn btn-live&quot; target=&quot;_blank&quot;&gt;&amp;#9654; Live&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/ANAMASGARD/conf-int-animint/blob/main/conf_int_viz.R&quot; class=&quot;btn btn-src&quot; target=&quot;_blank&quot;&gt;Source&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/ANAMASGARD/conf-int-animint&quot; class=&quot;btn btn-repo&quot; target=&quot;_blank&quot;&gt;Repo&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;
-  &lt;a href=&quot;https://ANAMASGARD.github.io/boot-iid-animint/&quot; target=&quot;_blank&quot; class=&quot;thumb-link&quot;&gt;
-    &lt;div class=&quot;card-thumb&quot;&gt;
-      
-      &lt;img src=&quot;repos/ANAMASGARD_boot-iid-animint.png&quot;
-           onerror=&quot;this.src=&#39;https://raw.githubusercontent.com/ANAMASGARD/boot-iid-animint/gh-pages/Capture.PNG&#39;;this.onerror=function(){this.style.display=&#39;none&#39;;this.parentNode.innerHTML+=&#39;&lt;span class=no-img&gt;No screenshot&lt;/span&gt;&#39;}&quot;&gt;
-    &lt;/div&gt;
-  &lt;/a&gt;
-  &lt;div class=&quot;card-body&quot;&gt;
-    &lt;p class=&quot;card-title&quot;&gt;Bootstrap i.i.d. Demo&lt;/p&gt;
-    &lt;p class=&quot;card-author&quot;&gt;ANAMASGARD&lt;/p&gt;
-    &lt;div class=&quot;card-links&quot;&gt;
-      &lt;a href=&quot;https://ANAMASGARD.github.io/boot-iid-animint/&quot; class=&quot;btn btn-live&quot; target=&quot;_blank&quot;&gt;&amp;#9654; Live&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/ANAMASGARD/boot-iid-animint/blob/main/boot_iid_viz.R&quot; class=&quot;btn btn-src&quot; target=&quot;_blank&quot;&gt;Source&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/ANAMASGARD/boot-iid-animint&quot; class=&quot;btn btn-repo&quot; target=&quot;_blank&quot;&gt;Repo&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;
-  &lt;a href=&quot;https://ANAMASGARD.github.io/cv-ani-animint/&quot; target=&quot;_blank&quot; class=&quot;thumb-link&quot;&gt;
-    &lt;div class=&quot;card-thumb&quot;&gt;
-      
-      &lt;img src=&quot;repos/ANAMASGARD_cv-ani-animint.png&quot;
-           onerror=&quot;this.src=&#39;https://raw.githubusercontent.com/ANAMASGARD/cv-ani-animint/gh-pages/Capture.PNG&#39;;this.onerror=function(){this.style.display=&#39;none&#39;;this.parentNode.innerHTML+=&#39;&lt;span class=no-img&gt;No screenshot&lt;/span&gt;&#39;}&quot;&gt;
-    &lt;/div&gt;
-  &lt;/a&gt;
-  &lt;div class=&quot;card-body&quot;&gt;
-    &lt;p class=&quot;card-title&quot;&gt;Demonstration of k-Fold Cross Validation&lt;/p&gt;
-    &lt;p class=&quot;card-author&quot;&gt;ANAMASGARD&lt;/p&gt;
-    &lt;div class=&quot;card-links&quot;&gt;
-      &lt;a href=&quot;https://ANAMASGARD.github.io/cv-ani-animint/&quot; class=&quot;btn btn-live&quot; target=&quot;_blank&quot;&gt;&amp;#9654; Live&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/ANAMASGARD/cv-ani-animint/blob/main/cv_ani_viz.R&quot; class=&quot;btn btn-src&quot; target=&quot;_blank&quot;&gt;Source&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/ANAMASGARD/cv-ani-animint&quot; class=&quot;btn btn-repo&quot; target=&quot;_blank&quot;&gt;Repo&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;
-  &lt;a href=&quot;https://NandaniAggarwal.github.io/boot.iid_animation_R/&quot; target=&quot;_blank&quot; class=&quot;thumb-link&quot;&gt;
-    &lt;div class=&quot;card-thumb&quot;&gt;
-      
-      &lt;img src=&quot;repos/NandaniAggarwal_boot.iid_animation_R.png&quot;
-           onerror=&quot;this.src=&#39;https://raw.githubusercontent.com/NandaniAggarwal/boot.iid_animation_R/gh-pages/Capture.PNG&#39;;this.onerror=function(){this.style.display=&#39;none&#39;;this.parentNode.innerHTML+=&#39;&lt;span class=no-img&gt;No screenshot&lt;/span&gt;&#39;}&quot;&gt;
-    &lt;/div&gt;
-  &lt;/a&gt;
-  &lt;div class=&quot;card-body&quot;&gt;
-    &lt;p class=&quot;card-title&quot;&gt;Bootstrapping i.i.d Data Port&lt;/p&gt;
-    &lt;p class=&quot;card-author&quot;&gt;NandaniAggarwal&lt;/p&gt;
-    &lt;div class=&quot;card-links&quot;&gt;
-      &lt;a href=&quot;https://NandaniAggarwal.github.io/boot.iid_animation_R/&quot; class=&quot;btn btn-live&quot; target=&quot;_blank&quot;&gt;&amp;#9654; Live&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/NandaniAggarwal/animint_R/blob/main/bootid.R&quot; class=&quot;btn btn-src&quot; target=&quot;_blank&quot;&gt;Source&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/NandaniAggarwal/boot.iid_animation_R&quot; class=&quot;btn btn-repo&quot; target=&quot;_blank&quot;&gt;Repo&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;&lt;div class=&quot;card&quot;&gt;
-  &lt;a href=&quot;https://NandaniAggarwal.github.io/boot.lowess_animations_R/&quot; target=&quot;_blank&quot; class=&quot;thumb-link&quot;&gt;
-    &lt;div class=&quot;card-thumb&quot;&gt;
-      
-      &lt;img src=&quot;repos/NandaniAggarwal_boot.lowess_animations_R.png&quot;
-           onerror=&quot;this.src=&#39;https://raw.githubusercontent.com/NandaniAggarwal/boot.lowess_animations_R/gh-pages/Capture.PNG&#39;;this.onerror=function(){this.style.display=&#39;none&#39;;this.parentNode.innerHTML+=&#39;&lt;span class=no-img&gt;No screenshot&lt;/span&gt;&#39;}&quot;&gt;
-    &lt;/div&gt;
-  &lt;/a&gt;
-  &lt;div class=&quot;card-body&quot;&gt;
-    &lt;p class=&quot;card-title&quot;&gt;Bootstrapping LOWESS Port&lt;/p&gt;
-    &lt;p class=&quot;card-author&quot;&gt;NandaniAggarwal&lt;/p&gt;
-    &lt;div class=&quot;card-links&quot;&gt;
-      &lt;a href=&quot;https://NandaniAggarwal.github.io/boot.lowess_animations_R/&quot; class=&quot;btn btn-live&quot; target=&quot;_blank&quot;&gt;&amp;#9654; Live&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/NandaniAggarwal/animint_R/blob/main/bootlowess.R&quot; class=&quot;btn btn-src&quot; target=&quot;_blank&quot;&gt;Source&lt;/a&gt;
-      &lt;a href=&quot;https://github.com/NandaniAggarwal/boot.lowess_animations_R&quot; class=&quot;btn btn-repo&quot; target=&quot;_blank&quot;&gt;Repo&lt;/a&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
 </div>
-<!-- ── MISSING SCREENSHOTS ── -->
-<div class="sec-head">
-<pre><code>   &lt;span class=&quot;label&quot;&gt;Missing Screenshots&lt;/span&gt;
-   &lt;div class=&quot;rule&quot;&gt;&lt;/div&gt;
-   &lt;span class=&quot;pill pill-red&quot;&gt;9 repos&lt;/span&gt;
- &lt;/div&gt;
- &lt;div class=&quot;err-grid&quot;&gt;&lt;div class=&quot;err-card&quot;&gt;
-     &lt;span class=&quot;err-icon&quot;&gt;&amp;#9888;&lt;/span&gt;
-     &lt;div&gt;&lt;a href=&quot;https://shubhammittal588.github.io/Shubham-Mittal-GSoC/&quot; target=&quot;_blank&quot;&gt;shubhammittal588/Shubham-Mittal-GSoC&lt;/a&gt;&lt;br&gt;Capture.PNG download returned 404: Not Found&lt;/div&gt;
-   &lt;/div&gt;&lt;div class=&quot;err-card&quot;&gt;
-     &lt;span class=&quot;err-icon&quot;&gt;&amp;#9888;&lt;/span&gt;
-     &lt;div&gt;&lt;a href=&quot;https://Vatsal-Rajput.github.io/BrownianMotion/&quot; target=&quot;_blank&quot;&gt;Vatsal-Rajput/BrownianMotion&lt;/a&gt;&lt;br&gt;Capture.PNG download returned 404: Not Found&lt;/div&gt;
-   &lt;/div&gt;&lt;div class=&quot;err-card&quot;&gt;
-     &lt;span class=&quot;err-icon&quot;&gt;&amp;#9888;&lt;/span&gt;
-     &lt;div&gt;&lt;a href=&quot;https://Tushar98644.github.io/Animint2_Tests/&quot; target=&quot;_blank&quot;&gt;Tushar98644/Animint2_Tests&lt;/a&gt;&lt;br&gt;Capture.PNG download returned 404: Not Found&lt;/div&gt;
-   &lt;/div&gt;&lt;div class=&quot;err-card&quot;&gt;
-     &lt;span class=&quot;err-icon&quot;&gt;&amp;#9888;&lt;/span&gt;
-     &lt;div&gt;&lt;a href=&quot;https://busttech.github.io/deploy2/&quot; target=&quot;_blank&quot;&gt;busttech/deploy2&lt;/a&gt;&lt;br&gt;Capture.PNG download returned 404: Not Found&lt;/div&gt;
-   &lt;/div&gt;&lt;div class=&quot;err-card&quot;&gt;
-     &lt;span class=&quot;err-icon&quot;&gt;&amp;#9888;&lt;/span&gt;
-     &lt;div&gt;&lt;a href=&quot;https://suhaani-agarwal.github.io/r/&quot; target=&quot;_blank&quot;&gt;suhaani-agarwal/r&lt;/a&gt;&lt;br&gt;Capture.PNG download returned 404: Not Found&lt;/div&gt;
-   &lt;/div&gt;&lt;div class=&quot;err-card&quot;&gt;
-     &lt;span class=&quot;err-icon&quot;&gt;&amp;#9888;&lt;/span&gt;
-     &lt;div&gt;&lt;a href=&quot;https://AviraL0013.github.io/least-squares-animint/&quot; target=&quot;_blank&quot;&gt;AviraL0013/least-squares-animint&lt;/a&gt;&lt;br&gt;Capture.PNG download returned 404: Not Found&lt;/div&gt;
-   &lt;/div&gt;&lt;div class=&quot;err-card&quot;&gt;
-     &lt;span class=&quot;err-icon&quot;&gt;&amp;#9888;&lt;/span&gt;
-     &lt;div&gt;&lt;a href=&quot;https://prateek-kalwar-95.github.io/brownian-motion/&quot; target=&quot;_blank&quot;&gt;prateek-kalwar-95/brownian-motion&lt;/a&gt;&lt;br&gt;Capture.PNG download returned 404: Not Found&lt;/div&gt;
-   &lt;/div&gt;&lt;div class=&quot;err-card&quot;&gt;
-     &lt;span class=&quot;err-icon&quot;&gt;&amp;#9888;&lt;/span&gt;
-     &lt;div&gt;&lt;a href=&quot;https://prateek-kalwar-95.github.io/flip_coin/&quot; target=&quot;_blank&quot;&gt;prateek-kalwar-95/flip_coin&lt;/a&gt;&lt;br&gt;Capture.PNG download returned 404: Not Found&lt;/div&gt;
-   &lt;/div&gt;&lt;div class=&quot;err-card&quot;&gt;
-     &lt;span class=&quot;err-icon&quot;&gt;&amp;#9888;&lt;/span&gt;
-     &lt;div&gt;&lt;a href=&quot;https://ashishtiwari03.github.io/animint2-medium-pages/&quot; target=&quot;_blank&quot;&gt;ashishtiwari03/animint2-medium-pages&lt;/a&gt;&lt;br&gt;Capture.PNG download returned 404: Not Found&lt;/div&gt;
-   &lt;/div&gt;&lt;/div&gt;</code></pre>
 </div>
-<!-- end .wrap -->
+<div class="viz-card">
+<a href="https://ANAMASGARD.github.io/boot-iid-animint/" target="_blank"><img src="repos/ANAMASGARD_boot-iid-animint.png" class="viz-image" alt="Bootstrap i.i.d. Demo" onerror="this.src='https://raw.githubusercontent.com/ANAMASGARD/boot-iid-animint/gh-pages/Capture.PNG'"/></a>
+<div class="viz-content">
+<h3 class="viz-title">
+Bootstrap i.i.d. Demo
+</h3>
+<p class="viz-author">
+ANAMASGARD
+</p>
+<div class="viz-links">
+<a href="https://ANAMASGARD.github.io/boot-iid-animint/" target="_blank">View
+Live</a><a href="https://github.com/ANAMASGARD/boot-iid-animint" target="_blank">Repository</a><a href="https://github.com/ANAMASGARD/boot-iid-animint/blob/main/boot_iid_viz.R" target="_blank">Source
+Code</a>
+</div>
+</div>
+</div>
+<div class="viz-card">
+<a href="https://ANAMASGARD.github.io/cv-ani-animint/" target="_blank"><img src="repos/ANAMASGARD_cv-ani-animint.png" class="viz-image" alt="Demonstration of k-Fold Cross Validation" onerror="this.src='https://raw.githubusercontent.com/ANAMASGARD/cv-ani-animint/gh-pages/Capture.PNG'"/></a>
+<div class="viz-content">
+<h3 class="viz-title">
+Demonstration of k-Fold Cross Validation
+</h3>
+<p class="viz-author">
+ANAMASGARD
+</p>
+<div class="viz-links">
+<a href="https://ANAMASGARD.github.io/cv-ani-animint/" target="_blank">View
+Live</a><a href="https://github.com/ANAMASGARD/cv-ani-animint" target="_blank">Repository</a><a href="https://github.com/ANAMASGARD/cv-ani-animint/blob/main/cv_ani_viz.R" target="_blank">Source
+Code</a>
+</div>
+</div>
+</div>
+<div class="viz-card">
+<a href="https://NandaniAggarwal.github.io/boot.iid_animation_R/" target="_blank"><img src="repos/NandaniAggarwal_boot.iid_animation_R.png" class="viz-image" alt="Bootstrapping i.i.d Data Port" onerror="this.src='https://raw.githubusercontent.com/NandaniAggarwal/boot.iid_animation_R/gh-pages/Capture.PNG'"/></a>
+<div class="viz-content">
+<h3 class="viz-title">
+Bootstrapping i.i.d Data Port
+</h3>
+<p class="viz-author">
+NandaniAggarwal
+</p>
+<div class="viz-links">
+<a href="https://NandaniAggarwal.github.io/boot.iid_animation_R/" target="_blank">View
+Live</a><a href="https://github.com/NandaniAggarwal/boot.iid_animation_R" target="_blank">Repository</a><a href="https://github.com/NandaniAggarwal/animint_R/blob/main/bootid.R" target="_blank">Source
+Code</a>
+</div>
+</div>
+</div>
+<div class="viz-card">
+<a href="https://NandaniAggarwal.github.io/boot.lowess_animations_R/" target="_blank"><img src="repos/NandaniAggarwal_boot.lowess_animations_R.png" class="viz-image" alt="Bootstrapping LOWESS Port" onerror="this.src='https://raw.githubusercontent.com/NandaniAggarwal/boot.lowess_animations_R/gh-pages/Capture.PNG'"/></a>
+<div class="viz-content">
+<h3 class="viz-title">
+Bootstrapping LOWESS Port
+</h3>
+<p class="viz-author">
+NandaniAggarwal
+</p>
+<div class="viz-links">
+<a href="https://NandaniAggarwal.github.io/boot.lowess_animations_R/" target="_blank">View
+Live</a><a href="https://github.com/NandaniAggarwal/boot.lowess_animations_R" target="_blank">Repository</a><a href="https://github.com/NandaniAggarwal/animint_R/blob/main/bootlowess.R" target="_blank">Source
+Code</a>
+</div>
+</div>
+</div>
+</div>
+<p class="section-label">
+⚠ Missing Screenshots
+</p>
+<div class="error-grid">
+<div class="error-card">
+<span class="err-icon">⚠</span>
+<div>
+<a href="https://shubhammittal588.github.io/Shubham-Mittal-GSoC/" target="_blank">shubhammittal588/Shubham-Mittal-GSoC</a><span
+class="err-msg"> — Capture.PNG download returned 404: Not Found</span>
+</div>
+</div>
+<div class="error-card">
+<span class="err-icon">⚠</span>
+<div>
+<a href="https://Vatsal-Rajput.github.io/BrownianMotion/" target="_blank">Vatsal-Rajput/BrownianMotion</a><span
+class="err-msg"> — Capture.PNG download returned 404: Not Found</span>
+</div>
+</div>
+<div class="error-card">
+<span class="err-icon">⚠</span>
+<div>
+<a href="https://Tushar98644.github.io/Animint2_Tests/" target="_blank">Tushar98644/Animint2_Tests</a><span
+class="err-msg"> — Capture.PNG download returned 404: Not Found</span>
+</div>
+</div>
+<div class="error-card">
+<span class="err-icon">⚠</span>
+<div>
+<a href="https://busttech.github.io/deploy2/" target="_blank">busttech/deploy2</a><span
+class="err-msg"> — Capture.PNG download returned 404: Not Found</span>
+</div>
+</div>
+<div class="error-card">
+<span class="err-icon">⚠</span>
+<div>
+<a href="https://suhaani-agarwal.github.io/r/" target="_blank">suhaani-agarwal/r</a><span
+class="err-msg"> — Capture.PNG download returned 404: Not Found</span>
+</div>
+</div>
+<div class="error-card">
+<span class="err-icon">⚠</span>
+<div>
+<a href="https://AviraL0013.github.io/least-squares-animint/" target="_blank">AviraL0013/least-squares-animint</a><span
+class="err-msg"> — Capture.PNG download returned 404: Not Found</span>
+</div>
+</div>
+<div class="error-card">
+<span class="err-icon">⚠</span>
+<div>
+<a href="https://prateek-kalwar-95.github.io/brownian-motion/" target="_blank">prateek-kalwar-95/brownian-motion</a><span
+class="err-msg"> — Capture.PNG download returned 404: Not Found</span>
+</div>
+</div>
+<div class="error-card">
+<span class="err-icon">⚠</span>
+<div>
+<a href="https://prateek-kalwar-95.github.io/flip_coin/" target="_blank">prateek-kalwar-95/flip_coin</a><span
+class="err-msg"> — Capture.PNG download returned 404: Not Found</span>
+</div>
+</div>
+<div class="error-card">
+<span class="err-icon">⚠</span>
+<div>
+<a href="https://ashishtiwari03.github.io/animint2-medium-pages/" target="_blank">ashishtiwari03/animint2-medium-pages</a><span
+class="err-msg"> — Capture.PNG download returned 404: Not Found</span>
+</div>
+</div>
+</div>
 <div class="footer">
-<p>Built with
+<p>
+Built with
 <a href="https://github.com/animint/animint2" target="_blank">animint2</a>
- ·  <a href="meta.csv">Download meta.csv</a>  · 
+ |  <a href="meta.csv">Download meta.csv</a>  | 
 <a href="https://github.com/tdhock/animint/wiki/Ports-of-animation-examples" target="_blank">Wiki
-page</a></p>
-</div>
-</div>
-</div>
+page</a>
+</p>
 </div>
 
 
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
 
 <!-- code folding -->
 
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 </body>
 </html>
