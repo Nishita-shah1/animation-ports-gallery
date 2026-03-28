@@ -1,10 +1,18 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
+
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
 <title>Animation Gallery</title>
+
 <script src="index_files/header-attrs-2.30/header-attrs.js"></script>
 <script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,28 +20,28 @@
 <script src="index_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="index_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="index_files/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>
-h1 {font-size: 34px;}
-h1.title {font-size: 38px;}
-h2 {font-size: 30px;}
-h3 {font-size: 24px;}
-h4 {font-size: 18px;}
-h5 {font-size: 16px;}
-h6 {font-size: 12px;}
-code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-pre:not([class]) { background-color: white }
-</style>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="index_files/navigation-1.1/tabsets.js"></script>
 <link href="index_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="index_files/highlightjs-9.12.0/highlight.js"></script>
+
 <style type="text/css">
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-span.underline{text-decoration: underline;}
-div.column{display: inline-block; vertical-align: top; width: 50%;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
 <style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
@@ -44,334 +52,279 @@ if (window.hljs) {
   }
 }
 </script>
+
+
+
+
+
+
 <link rel="stylesheet" href="style.css" type="text/css" />
-<style type="text/css">
-.main-container { max-width: 940px; margin-left: auto; margin-right: auto; }
-img { max-width:100%; }
-.tabbed-pane { padding-top: 12px; }
-.html-widget { margin-bottom: 20px; }
-button.code-folding-btn:focus { outline: none; }
-summary { display: list-item; }
-details > summary > p:only-child { display: inline; }
-pre code { padding: 0; }
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
+
+
+
+<!-- tabsets -->
+
 <style type="text/css">
-.tabset-dropdown > .nav-tabs { display: inline-table; max-height: 500px; min-height: 44px; overflow-y: auto; border: 1px solid #ddd; border-radius: 4px; }
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before { content: "\e259"; font-family: 'Glyphicons Halflings'; display: inline-block; padding: 10px; border-right: 1px solid #ddd; }
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before { content: "\e258"; font-family: 'Glyphicons Halflings'; border: none; }
-.tabset-dropdown > .nav-tabs > li.active { display: block; }
-.tabset-dropdown > .nav-tabs > li > a, .tabset-dropdown > .nav-tabs > li > a:focus, .tabset-dropdown > .nav-tabs > li > a:hover { border: none; display: inline-block; border-radius: 4px; background-color: transparent; }
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li { display: block; float: none; }
-.tabset-dropdown > .nav-tabs > li { display: none; }
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
 </style>
+
+<!-- code folding -->
+
+
+
+
 </head>
+
 <body>
+
+
 <div class="container-fluid main-container">
+
+
+
+
 <div id="header">
+
+
+
 <h1 class="title toc-ignore">Animation Gallery</h1>
+
 </div>
+
 
 <div class="site-wrapper">
-
-  <header class="hero">
-    <div class="hero-eyebrow">animint2</div>
-    <h1 class="hero-title">Statistical<br><em>Animation</em><br>Gallery</h1>
-    <p class="hero-subtitle">Interactive statistical visualizations built with R and animint2</p>
-    <div class="hero-rule"></div>
-  </header>
-
-  <section class="meta-bar">
-    <div class="meta-stat"><span class="meta-num">16</span><span class="meta-label">Visualizations</span></div>
-    <div class="meta-stat"><span class="meta-num">11</span><span class="meta-label">Contributors</span></div>
-    <div class="meta-stat"><span class="meta-num">R</span><span class="meta-label">Language</span></div>
-  </section>
-
-  <main class="gallery">
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://shubhammittal588.github.io/Shubham-Mittal-GSoC/Galton_box/index2.html" target="_blank" rel="noopener">
-        <img src="repos/shubhammittal588_Galton_box.png" alt="Demonstration of the Galton Box" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">01</span>
-        <h2 class="card-title">Demonstration of the Galton Box</h2>
-        <div class="card-links">
-          <a href="https://shubhammittal588.github.io/Shubham-Mittal-GSoC/Galton_box/index2.html" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/shubhammittal588/Galton_box" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/shubhammittal588/Animated_interactive_ggplots_GSoC_Tasks/blob/main/galton_box_final.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://vatsal-rajput.github.io/BrownianMotion/" target="_blank" rel="noopener">
-        <img src="repos/Vatsal-Rajput_BrownianMotion.png" alt="Demonstration of Brownian Motion" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">02</span>
-        <h2 class="card-title">Demonstration of Brownian Motion</h2>
-        <div class="card-links">
-          <a href="https://vatsal-rajput.github.io/BrownianMotion/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/Vatsal-Rajput/BrownianMotion" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/Vatsal-Rajput/Animint2Test" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://tushar98644.github.io/Animint2_Tests/monte-carlo-integration/index.html" target="_blank" rel="noopener">
-        <img src="repos/tushar98644_Animint2_Tests.png" alt="Monte Carlo Integration" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">03</span>
-        <h2 class="card-title">Monte Carlo Integration</h2>
-        <div class="card-links">
-          <a href="https://tushar98644.github.io/Animint2_Tests/monte-carlo-integration/index.html" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/tushar98644/Animint2_Tests" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/tushar98644/Animint2_Tests" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://busttech.github.io/deploy2/" target="_blank" rel="noopener">
-        <img src="repos/busttech_deploy2.png" alt="Probability in Flipping Coins" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">04</span>
-        <h2 class="card-title">Probability in Flipping Coins</h2>
-        <div class="card-links">
-          <a href="https://busttech.github.io/deploy2/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/busttech/deploy2" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/busttech/Test-solutions-of-animint/blob/main/Medium-test-solution/main.r" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://suhaani-agarwal.github.io/r/newton_raphson_method/index.html" target="_blank" rel="noopener">
-        <img src="repos/suhaani-agarwal_newton_raphson_method.png" alt="Newton-Raphson Method" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">05</span>
-        <h2 class="card-title">Newton-Raphson Method</h2>
-        <div class="card-links">
-          <a href="https://suhaani-agarwal.github.io/r/newton_raphson_method/index.html" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/suhaani-agarwal/newton_raphson_method" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/suhaani-agarwal/r/tree/main/medium_test_newtons_method_code/newtons_root.r" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://aryan-singh-git.github.io/knn-animint/" target="_blank" rel="noopener">
-        <img src="repos/Aryan-SINGH-GIT_knn-animint.png" alt="k-Nearest Neighbours Classification" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">06</span>
-        <h2 class="card-title">k-Nearest Neighbours Classification</h2>
-        <div class="card-links">
-          <a href="https://aryan-singh-git.github.io/knn-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/Aryan-SINGH-GIT/knn-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/Aryan-SINGH-GIT/animated-interactive-ggplots/blob/master/02_animint2_interactions/knn_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://aviral0013.github.io/least-squares-animint/" target="_blank" rel="noopener">
-        <img src="repos/AviraL0013_least-squares-animint.png" alt="Least Squares Method" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">07</span>
-        <h2 class="card-title">Least Squares Method</h2>
-        <div class="card-links">
-          <a href="https://aviral0013.github.io/least-squares-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/AviraL0013/least-squares-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/AviraL0013/least-squares-animint/blob/main/source/least_squares_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://prateek-kalwar-95.github.io/brownian-motion/" target="_blank" rel="noopener">
-        <img src="repos/prateek-kalwar-95_brownian-motion.png" alt="Brownian Motion" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">08</span>
-        <h2 class="card-title">Brownian Motion</h2>
-        <div class="card-links">
-          <a href="https://prateek-kalwar-95.github.io/brownian-motion/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/prateek-kalwar-95/brownian-motion" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/prateek-kalwar-95/brownian-motion" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://prateek-kalwar-95.github.io/flip_coin/" target="_blank" rel="noopener">
-        <img src="repos/prateek-kalwar-95_flip_coin.png" alt="Coin Flip Probability" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">09</span>
-        <h2 class="card-title">Coin Flip Probability</h2>
-        <div class="card-links">
-          <a href="https://prateek-kalwar-95.github.io/flip_coin/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/prateek-kalwar-95/flip_coin" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/prateek-kalwar-95/flip_coin" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://anamasgard.github.io/conf-int-animint/" target="_blank" rel="noopener">
-        <img src="repos/ANAMASGARD_conf-int-animint.png" alt="Demonstration of Confidence Intervals" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">10</span>
-        <h2 class="card-title">Demonstration of Confidence Intervals</h2>
-        <div class="card-links">
-          <a href="https://anamasgard.github.io/conf-int-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/ANAMASGARD/conf-int-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/ANAMASGARD/conf-int-animint/blob/main/conf_int_viz.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://anamasgard.github.io/boot-iid-animint/" target="_blank" rel="noopener">
-        <img src="repos/ANAMASGARD_boot-iid-animint.png" alt="Bootstrap i.i.d. Demo" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">11</span>
-        <h2 class="card-title">Bootstrap i.i.d. Demo</h2>
-        <div class="card-links">
-          <a href="https://anamasgard.github.io/boot-iid-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/ANAMASGARD/boot-iid-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/ANAMASGARD/boot-iid-animint/blob/main/boot_iid_viz.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://ashishtiwari03.github.io/animint2-medium-pages/" target="_blank" rel="noopener">
-        <img src="repos/ashishtiwari03_animint2-medium-pages.png" alt="Animint2 Medium Test" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">12</span>
-        <h2 class="card-title">Animint2 Medium Test</h2>
-        <div class="card-links">
-          <a href="https://ashishtiwari03.github.io/animint2-medium-pages/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/ashishtiwari03/animint2-medium-pages" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/ashishtiwari03/animint2-medium-pages" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://anamasgard.github.io/cv-ani-animint/" target="_blank" rel="noopener">
-        <img src="repos/ANAMASGARD_cv-ani-animint.png" alt="Demonstration of k-Fold Cross Validation" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">13</span>
-        <h2 class="card-title">Demonstration of k-Fold Cross Validation</h2>
-        <div class="card-links">
-          <a href="https://anamasgard.github.io/cv-ani-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/ANAMASGARD/cv-ani-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/ANAMASGARD/cv-ani-animint/blob/main/cv_ani_viz.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://nandaniaggarwal.github.io/boot.iid_animation_R/" target="_blank" rel="noopener">
-        <img src="repos/NandaniAggarwal_boot.iid_animation_R.png" alt="Bootstrapping i.i.d. Data Port" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">14</span>
-        <h2 class="card-title">Bootstrapping i.i.d. Data Port</h2>
-        <div class="card-links">
-          <a href="https://nandaniaggarwal.github.io/boot.iid_animation_R/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/NandaniAggarwal/boot.iid_animation_R" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/NandaniAggarwal/animint_R/blob/main/bootid.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://nandaniaggarwal.github.io/boot.lowess_animations_R/" target="_blank" rel="noopener">
-        <img src="repos/NandaniAggarwal_boot.lowess_animations_R.png" alt="Bootstrapping LOWESS Port" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">15</span>
-        <h2 class="card-title">Bootstrapping LOWESS Port</h2>
-        <div class="card-links">
-          <a href="https://nandaniaggarwal.github.io/boot.lowess_animations_R/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/NandaniAggarwal/boot.lowess_animations_R" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/NandaniAggarwal/animint_R/blob/main/bootlowess.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="viz-card">
-      <a class="card-thumb" href="https://nishita-shah1.github.io/bisection-animint/" target="_blank" rel="noopener">
-        <img src="repos/Nishita-shah1_bisection-animint.png" alt="Bisection Method" loading="lazy"/>
-        <div class="card-overlay"><span class="overlay-cta">View Live &#8599;</span></div>
-      </a>
-      <div class="card-body">
-        <span class="card-index">16</span>
-        <h2 class="card-title">Bisection Method</h2>
-        <div class="card-links">
-          <a href="https://nishita-shah1.github.io/bisection-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
-          <a href="https://github.com/Nishita-shah1/bisection-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>
-          <a href="https://github.com/Nishita-shah1/bisection-animint/blob/main/bisection_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-        </div>
-      </div>
-    </article>
-
-  </main>
-
-  <footer class="site-footer">
-    <p>Built with <strong>animint2</strong> &middot; <a href="meta.csv">Download meta.csv</a></p>
-  </footer>
+<header class="hero">
+<div class="hero-eyebrow">
+animint2
+</div>
+<h1 class="hero-title">
+Statistical<br><em>Animation</em><br>Gallery
+</h1>
+<p class="hero-subtitle">
+Interactive statistical visualizations built with R and animint2
+</p>
+<div class="hero-rule">
 
 </div>
+</header>
+<section class="meta-bar">
+<div class="meta-stat">
+<span class="meta-num">5</span><span
+class="meta-label">Visualizations</span>
+</div>
+<div class="meta-stat">
+<span class="meta-num">1</span><span
+class="meta-label">Contributors</span>
+</div>
+<div class="meta-stat">
+<span class="meta-num">R</span><span class="meta-label">Language</span>
+</div>
+</section>
+<main class="gallery">
+<article class="viz-card">
+<a class="card-thumb" href="https://Nishita-shah1.github.io/bisection-animint/" target="_blank" rel="noopener"><img src="repos/Nishita-shah1_bisection-animint.png" alt="Bisection Method" loading="lazy"/>
+<div class="card-overlay">
+<span class="overlay-cta">View Live ↗</span>
+</div>
+</a>
+<div class="card-body">
+<span class="card-index">01</span>
+<h2 class="card-title">
+Bisection Method
+</h2>
+<div class="card-links">
+<a href="https://Nishita-shah1.github.io/bisection-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live
+Demo</a><a href="https://github.com/Nishita-shah1/bisection-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a><a href="https://github.com/Nishita-shah1/bisection-animint/blob/main/bisection_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
+</div>
+</div>
+</article>
+<article class="viz-card">
+<a class="card-thumb" href="https://Nishita-shah1.github.io/clt-animint/" target="_blank" rel="noopener"><img src="repos/Nishita-shah1_clt-animint.png" alt="Central Limit Theorem" loading="lazy"/>
+<div class="card-overlay">
+<span class="overlay-cta">View Live ↗</span>
+</div>
+</a>
+<div class="card-body">
+<span class="card-index">02</span>
+<h2 class="card-title">
+Central Limit Theorem
+</h2>
+<div class="card-links">
+<a href="https://Nishita-shah1.github.io/clt-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live
+Demo</a><a href="https://github.com/Nishita-shah1/clt-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a><a href="https://github.com/Nishita-shah1/clt-animint/blob/main/clt_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
+</div>
+</div>
+</article>
+<article class="viz-card">
+<a class="card-thumb" href="https://Nishita-shah1.github.io/qqnorm-animint/" target="_blank" rel="noopener"><img src="repos/Nishita-shah1_qqnorm-animint.png" alt="QQ Plot Simulation" loading="lazy"/>
+<div class="card-overlay">
+<span class="overlay-cta">View Live ↗</span>
+</div>
+</a>
+<div class="card-body">
+<span class="card-index">03</span>
+<h2 class="card-title">
+QQ Plot Simulation
+</h2>
+<div class="card-links">
+<a href="https://Nishita-shah1.github.io/qqnorm-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live
+Demo</a><a href="https://github.com/Nishita-shah1/qqnorm-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a><a href="https://github.com/Nishita-shah1/qqnorm-animint/blob/main/qqnorm_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
+</div>
+</div>
+</article>
+<article class="viz-card">
+<a class="card-thumb" href="https://Nishita-shah1.github.io/mwar-animint/" target="_blank" rel="noopener"><img src="repos/Nishita-shah1_mwar-animint.png" alt="Moving Window Auto-Regression" loading="lazy"/>
+<div class="card-overlay">
+<span class="overlay-cta">View Live ↗</span>
+</div>
+</a>
+<div class="card-body">
+<span class="card-index">04</span>
+<h2 class="card-title">
+Moving Window Auto-Regression
+</h2>
+<div class="card-links">
+<a href="https://Nishita-shah1.github.io/mwar-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live
+Demo</a><a href="https://github.com/Nishita-shah1/mwar-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a><a href="https://github.com/Nishita-shah1/mwar-animint/blob/main/mwar_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
+</div>
+</div>
+</article>
+<article class="viz-card">
+<a class="card-thumb" href="https://Nishita-shah1.github.io/sample-animint/" target="_blank" rel="noopener"><img src="repos/Nishita-shah1_sample-animint.png" alt="Simple Random Sampling" loading="lazy"/>
+<div class="card-overlay">
+<span class="overlay-cta">View Live ↗</span>
+</div>
+</a>
+<div class="card-body">
+<span class="card-index">05</span>
+<h2 class="card-title">
+Simple Random Sampling
+</h2>
+<div class="card-links">
+<a href="https://Nishita-shah1.github.io/sample-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live
+Demo</a><a href="https://github.com/Nishita-shah1/sample-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a><a href="https://github.com/Nishita-shah1/sample-animint/blob/main/sample_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
+</div>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+<p>
+Built with <strong>animint2</strong> · <a href="meta.csv">Download
+meta.csv</a>
+</p>
+</footer>
+</div>
+
+
+
 
 </div>
 
 <script>
+
+// add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
   $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
 });
+
+
 </script>
+
+<!-- tabsets -->
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
     $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
   (function () {
     var script = document.createElement("script");
