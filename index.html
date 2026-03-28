@@ -1,338 +1,189 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
-
 <meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title>Animation Gallery</title>
-
-<script src="index_files/header-attrs-2.30/header-attrs.js"></script>
-<script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="index_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
-<script src="index_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="index_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="index_files/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="index_files/navigation-1.1/tabsets.js"></script>
-<link href="index_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="index_files/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+<title>Nishita’s animint2 gallery</title>
 
-<style type="text/css">code{white-space: pre;}</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #ffffff;
+  color: #222;
+  margin: 0;
 }
-</script>
 
-
-
-
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
+
+h1 {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 10px 8px;
+  font-weight: 600;
+  border-bottom: 2px solid #ddd;
+}
+
+td {
+  padding: 16px 8px;
+  vertical-align: top;
+  border-bottom: 1px solid #eee;
+}
+
 img {
-  max-width:100%;
+  width: 300px;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
 }
-.tabbed-pane {
-  padding-top: 12px;
+
+img:hover {
+  transform: scale(1.03);
 }
-.html-widget {
-  margin-bottom: 20px;
+
+.links a {
+  margin-right: 10px;
 }
-button.code-folding-btn:focus {
-  outline: none;
+
+.footer {
+  margin-top: 40px;
+  font-size: 14px;
 }
-summary {
-  display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
-}
-pre code {
-  padding: 0;
-}
+
 </style>
-
-
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "\e259";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "\e258";
-  font-family: 'Glyphicons Halflings';
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
 
 </head>
 
 <body>
 
+<div class="container">
 
-<div class="container-fluid main-container">
+<h1>Nishita’s animint2 gallery</h1>
 
-
-
-
-<div id="header">
-
-
-
-<h1 class="title toc-ignore">Animation Gallery</h1>
-
-</div>
-
-
-<div class="site-wrapper">
-<header class="hero">
-<div class="hero-eyebrow">
-animint2
-</div>
-<h1 class="hero-title">
-Statistical<br><em>Animation</em><br>Gallery
-</h1>
-<p class="hero-subtitle">
-Interactive statistical visualizations built with R and animint2
+<p class="subtitle">
+This is a gallery of data visualizations which have been created using the R package
+<a href="https://github.com/animint/animint2">animint2</a>.
 </p>
-<div class="hero-rule">
 
-</div>
-</header>
-<section class="meta-bar">
-<div class="meta-stat">
-<span class="meta-num">5</span><span
-class="meta-label">Visualizations</span>
-</div>
-<div class="meta-stat">
-<span class="meta-num">1</span><span
-class="meta-label">Contributors</span>
-</div>
-<div class="meta-stat">
-<span class="meta-num">R</span><span class="meta-label">Language</span>
-</div>
-</section>
-<main class="gallery">
-<article class="viz-card">
-<a class="card-thumb" href="https://Nishita-shah1.github.io/bisection-animint/" target="_blank" rel="noopener"><img src="repos/Nishita-shah1_bisection-animint.png" alt="Bisection Method" loading="lazy"/>
-<div class="card-overlay">
-<span class="overlay-cta">View Live ↗</span>
-</div>
+<table>
+<thead>
+<tr>
+<th>viz.link</th>
+<th>title</th>
+<th>links</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>
+<a href="https://Nishita-shah1.github.io/bisection-animint/">
+<img src="https://raw.githubusercontent.com/Nishita-shah1/bisection-animint/gh-pages/Capture.PNG">
 </a>
-<div class="card-body">
-<span class="card-index">01</span>
-<h2 class="card-title">
-Bisection Method
-</h2>
-<div class="card-links">
-<a href="https://Nishita-shah1.github.io/bisection-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live
-Demo</a><a href="https://github.com/Nishita-shah1/bisection-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a><a href="https://github.com/Nishita-shah1/bisection-animint/blob/main/bisection_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-</div>
-</div>
-</article>
-<article class="viz-card">
-<a class="card-thumb" href="https://Nishita-shah1.github.io/clt-animint/" target="_blank" rel="noopener"><img src="repos/Nishita-shah1_clt-animint.png" alt="Central Limit Theorem" loading="lazy"/>
-<div class="card-overlay">
-<span class="overlay-cta">View Live ↗</span>
-</div>
+</td>
+<td>Bisection Method</td>
+<td class="links">
+<a href="https://github.com/Nishita-shah1/bisection-animint/tree/gh-pages">repo</a>
+<a href="https://github.com/Nishita-shah1/bisection-animint/blob/main/bisection_animint.R">source</a>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://Nishita-shah1.github.io/clt-animint/">
+<img src="https://raw.githubusercontent.com/Nishita-shah1/clt-animint/gh-pages/Capture.PNG">
 </a>
-<div class="card-body">
-<span class="card-index">02</span>
-<h2 class="card-title">
-Central Limit Theorem
-</h2>
-<div class="card-links">
-<a href="https://Nishita-shah1.github.io/clt-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live
-Demo</a><a href="https://github.com/Nishita-shah1/clt-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a><a href="https://github.com/Nishita-shah1/clt-animint/blob/main/clt_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-</div>
-</div>
-</article>
-<article class="viz-card">
-<a class="card-thumb" href="https://Nishita-shah1.github.io/qqnorm-animint/" target="_blank" rel="noopener"><img src="repos/Nishita-shah1_qqnorm-animint.png" alt="QQ Plot Simulation" loading="lazy"/>
-<div class="card-overlay">
-<span class="overlay-cta">View Live ↗</span>
-</div>
+</td>
+<td>Central Limit Theorem</td>
+<td class="links">
+<a href="https://github.com/Nishita-shah1/clt-animint/tree/gh-pages">repo</a>
+<a href="https://github.com/Nishita-shah1/clt-animint/blob/main/clt_animint.R">source</a>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://Nishita-shah1.github.io/qqnorm-animint/">
+<img src="https://raw.githubusercontent.com/Nishita-shah1/qqnorm-animint/gh-pages/Capture.PNG">
 </a>
-<div class="card-body">
-<span class="card-index">03</span>
-<h2 class="card-title">
-QQ Plot Simulation
-</h2>
-<div class="card-links">
-<a href="https://Nishita-shah1.github.io/qqnorm-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live
-Demo</a><a href="https://github.com/Nishita-shah1/qqnorm-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a><a href="https://github.com/Nishita-shah1/qqnorm-animint/blob/main/qqnorm_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-</div>
-</div>
-</article>
-<article class="viz-card">
-<a class="card-thumb" href="https://Nishita-shah1.github.io/mwar-animint/" target="_blank" rel="noopener"><img src="repos/Nishita-shah1_mwar-animint.png" alt="Moving Window Auto-Regression" loading="lazy"/>
-<div class="card-overlay">
-<span class="overlay-cta">View Live ↗</span>
-</div>
+</td>
+<td>QQ Plot Simulation</td>
+<td class="links">
+<a href="https://github.com/Nishita-shah1/qqnorm-animint/tree/gh-pages">repo</a>
+<a href="https://github.com/Nishita-shah1/qqnorm-animint/blob/main/qqnorm_animint.R">source</a>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://Nishita-shah1.github.io/mwar-animint/">
+<img src="https://raw.githubusercontent.com/Nishita-shah1/mwar-animint/gh-pages/Capture.PNG">
 </a>
-<div class="card-body">
-<span class="card-index">04</span>
-<h2 class="card-title">
-Moving Window Auto-Regression
-</h2>
-<div class="card-links">
-<a href="https://Nishita-shah1.github.io/mwar-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live
-Demo</a><a href="https://github.com/Nishita-shah1/mwar-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a><a href="https://github.com/Nishita-shah1/mwar-animint/blob/main/mwar_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-</div>
-</div>
-</article>
-<article class="viz-card">
-<a class="card-thumb" href="https://Nishita-shah1.github.io/sample-animint/" target="_blank" rel="noopener"><img src="repos/Nishita-shah1_sample-animint.png" alt="Simple Random Sampling" loading="lazy"/>
-<div class="card-overlay">
-<span class="overlay-cta">View Live ↗</span>
-</div>
+</td>
+<td>Moving Window Auto-Regression</td>
+<td class="links">
+<a href="https://github.com/Nishita-shah1/mwar-animint/tree/gh-pages">repo</a>
+<a href="https://github.com/Nishita-shah1/mwar-animint/blob/main/mwar_animint.R">source</a>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="https://Nishita-shah1.github.io/sample-animint/">
+<img src="https://raw.githubusercontent.com/Nishita-shah1/sample-animint/gh-pages/Capture.PNG">
 </a>
-<div class="card-body">
-<span class="card-index">05</span>
-<h2 class="card-title">
-Simple Random Sampling
-</h2>
-<div class="card-links">
-<a href="https://Nishita-shah1.github.io/sample-animint/" target="_blank" rel="noopener" class="btn btn-primary">Live
-Demo</a><a href="https://github.com/Nishita-shah1/sample-animint" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a><a href="https://github.com/Nishita-shah1/sample-animint/blob/main/sample_animint.R" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>
-</div>
-</div>
-</article>
-</main>
-<footer class="site-footer">
-<p>
-Built with <strong>animint2</strong> · <a href="meta.csv">Download
-meta.csv</a>
-</p>
-</footer>
-</div>
+</td>
+<td>Simple Random Sampling</td>
+<td class="links">
+<a href="https://github.com/Nishita-shah1/sample-animint/tree/gh-pages">repo</a>
+<a href="https://github.com/Nishita-shah1/sample-animint/blob/main/sample_animint.R">source</a>
+</td>
+</tr>
 
+</tbody>
+</table>
 
+<div class="footer">
+<p><a href="repo.txt">Download repo list: repo.txt</a></p>
 
-
+<h3>Source code</h3>
+<ul>
+<li><a href="https://github.com/Nishita-shah1/animation-ports-gallery/tree/gh-pages">This gallery repository</a></li>
+<li><a href="https://github.com/animint/animint2/blob/master/R/z_pages.R">animint2::update_gallery()</a></li>
+</ul>
 </div>
 
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
+</div>
 
 </body>
 </html>

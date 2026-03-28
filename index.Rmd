@@ -1,80 +1,65 @@
 ---
-title: "Animation Gallery"
+title: "Nishita's animint2 gallery"
 output:
   html_document:
     self_contained: false
-    css: style.css
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, results = "asis", message = FALSE, warning = FALSE)
-suppressPackageStartupMessages(library(data.table))
-```
+This is a gallery of data visualizations created using the R package
+[animint2](https://github.com/animint/animint2) - built for GSoC 2026.
 
-<div class="site-wrapper">
+```{r gallery-table, echo=FALSE, results='asis', message=FALSE, warning=FALSE}
+nisRepos <- readLines("repo.txt")
+nisRepos <- nisRepos[nzchar(trimws(nisRepos))]
 
-  <header class="hero">
-    <div class="hero-eyebrow">animint2</div>
-    <h1 class="hero-title">Statistical<br><em>Animation</em><br>Gallery</h1>
-    <p class="hero-subtitle">Interactive statistical visualizations built with R and animint2</p>
-    <div class="hero-rule"></div>
-  </header>
+nisTitles <- c(
+  "Nishita-shah1/bisection-animint" = "Bisection Method",
+  "Nishita-shah1/clt-animint"       = "Central Limit Theorem",
+  "Nishita-shah1/qqnorm-animint"    = "QQ Plot Simulation",
+  "Nishita-shah1/mwar-animint"      = "Moving Window Auto-Regression",
+  "Nishita-shah1/sample-animint"    = "Simple Random Sampling"
+)
 
-  <section class="meta-bar">
-```{r stats}
-meta <- fread("meta.csv")
-n   <- nrow(meta)
-cat(paste0(
-  '<div class="meta-stat"><span class="meta-num">', n, '</span>',
-  '<span class="meta-label">Visualizations</span></div>',
-  '<div class="meta-stat"><span class="meta-num">',
-  length(unique(sub("/.*", "", meta$viz_owner_repo))),
-  '</span><span class="meta-label">Contributors</span></div>',
-  '<div class="meta-stat"><span class="meta-num">R</span>',
-  '<span class="meta-label">Language</span></div>'
-))
-```
-  </section>
+cat('<table border="1" style="border-collapse:collapse;width:100%;font-size:0.95em;">\n')
+cat('<thead><tr>',
+    '<th style="padding:6px 10px;">viz.link</th>',
+    '<th style="padding:6px 10px;">title</th>',
+    '<th style="padding:6px 10px;">links</th>',
+    '</tr></thead>\n<tbody>\n')
 
-  <main class="gallery">
-```{r gallery}
-for (i in seq_len(nrow(meta))) {
-  row      <- meta[i, ]
-  repo_key <- gsub("/", "_", row$viz_owner_repo)
-  img_path <- paste0("repos/", repo_key, ".png")
-  owner    <- sub("/.*", "", row$viz_owner_repo)
-  repo     <- sub(".*/", "", row$viz_owner_repo)
-  viz_url  <- paste0("https://", owner, ".github.io/", repo, "/")
-  repo_url <- paste0("https://github.com/", row$viz_owner_repo)
-  num_pad  <- formatC(i, width = 2, flag = "0")
+for (nisEntry in nisRepos) {
+  nisOwner  <- sub("/.*", "", nisEntry)
+  nisRepo   <- sub(".*/", "", nisEntry)
+  nisVizUrl <- paste0("https://", nisOwner, ".github.io/", nisRepo, "/")
+  nisRepUrl <- paste0("https://github.com/", nisEntry)
+  nisGHPUrl <- paste0(nisRepUrl, "/tree/gh-pages")
+  nisSrcUrl <- paste0(nisRepUrl, "/blob/main/", gsub("-", "_", nisRepo), ".R")
+  nisImgUrl <- paste0("https://raw.githubusercontent.com/", nisEntry, "/gh-pages/Capture.PNG")
+  nisTitle  <- ifelse(!is.na(nisTitles[nisEntry]), nisTitles[nisEntry], nisRepo)
 
   cat(paste0(
-    '<article class="viz-card">',
-      '<a class="card-thumb" href="', viz_url, '" target="_blank" rel="noopener">',
-        '<img src="', img_path, '" alt="', row$title, '" loading="lazy"/>',
-        '<div class="card-overlay">',
-          '<span class="overlay-cta">View Live &#8599;</span>',
-        '</div>',
+    '<tr>',
+    '<td style="padding:6px 10px;width:310px;">',
+      '<a href="', nisVizUrl, '">',
+        '<img src="', nisImgUrl, '" alt="', nisTitle, '"',
+             ' width="300" onerror="this.style.display=\'none\'"/>',
       '</a>',
-      '<div class="card-body">',
-        '<span class="card-index">', num_pad, '</span>',
-        '<h2 class="card-title">', row$title, '</h2>',
-        '<div class="card-links">',
-          '<a href="', viz_url,  '" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>',
-          '<a href="', repo_url, '" target="_blank" rel="noopener" class="btn btn-ghost">Repository</a>',
-          '<a href="', row$source, '" target="_blank" rel="noopener" class="btn btn-ghost">Source</a>',
-        '</div>',
-      '</div>',
-    '</article>'
+    '</td>',
+    '<td style="padding:6px 10px;">', nisTitle, '</td>',
+    '<td style="padding:6px 10px;">',
+      '<a href="', nisGHPUrl, '">repo</a> ',
+      '<a href="', nisSrcUrl, '">source</a>',
+    '</td>',
+    '</tr>\n'
   ))
 }
+
+cat('</tbody>\n</table>\n')
 ```
-  </main>
 
-  <footer class="site-footer">
-    <p>Built with <strong>animint2</strong> &middot;
-       <a href="meta.csv">Download meta.csv</a>
-    </p>
-  </footer>
+[Download repo list: repo.txt](repo.txt)
 
-</div>
+## Source code
+
+* [This gallery repository](https://github.com/Nishita-shah1/animation-ports-gallery/tree/gh-pages)
+* [`animint2::update_gallery()`](https://github.com/animint/animint2/blob/master/R/z_pages.R)
